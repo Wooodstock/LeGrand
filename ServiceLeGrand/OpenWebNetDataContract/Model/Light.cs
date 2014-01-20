@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ServiceLeGrand.Model
 {
+    [DataContract]
     class Light : Equipment
     {
         public Light(int id, String name, Boolean state, int number, int intensity)
@@ -19,6 +21,7 @@ namespace ServiceLeGrand.Model
 
         private int intensity;
 
+        [DataMember]
         public int Intensity
         {
             get { return intensity; }

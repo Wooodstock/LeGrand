@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ServiceLeGrand.Model
 {
+    [DataContract]
     class Day
     {
 
@@ -20,6 +22,7 @@ namespace ServiceLeGrand.Model
             this.name = name;
         }
 
+        [DataMember]
         private int id;
 
         public int Id
@@ -28,6 +31,7 @@ namespace ServiceLeGrand.Model
             set { id = value; }
         }
 
+        [DataMember]
         private String name;
 
         public String Name

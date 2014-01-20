@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ServiceLeGrand.Model
 {
+    [DataContract]
     class Consumption
     {
         public Consumption()
@@ -19,6 +21,7 @@ namespace ServiceLeGrand.Model
             this.gaz = gaz;
         }
 
+        [DataMember]
         private String electrical;
 
         public String Electrical
@@ -27,6 +30,7 @@ namespace ServiceLeGrand.Model
             set { electrical = value; }
         }
 
+        [DataMember]
         private String gaz;
 
         public String Gaz

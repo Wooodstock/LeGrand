@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ServiceLeGrand.Model
 {
+    [DataContract]
     class Home
     {
         public Home()
@@ -22,7 +24,7 @@ namespace ServiceLeGrand.Model
             this.volume = volume;
         }
 
-
+        [DataMember]
         private int id;
 
         public int Id
@@ -31,6 +33,7 @@ namespace ServiceLeGrand.Model
             set { id = value; }
         }
 
+        [DataMember]
         private String name;
 
         public String Name
@@ -39,6 +42,7 @@ namespace ServiceLeGrand.Model
             set { name = value; }
         }
 
+        [DataMember]
         private List<Room> rooms;
 
         public List<Room> Rooms
@@ -47,6 +51,7 @@ namespace ServiceLeGrand.Model
             set { rooms = value; }
         }
 
+        [DataMember]
         private float surface;
 
         public float Surface
@@ -55,6 +60,7 @@ namespace ServiceLeGrand.Model
             set { surface = value; }
         }
 
+        [DataMember]
         private float volume;
 
         public float Volume

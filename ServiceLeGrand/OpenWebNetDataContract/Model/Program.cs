@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ServiceLeGrand.Model
 {
+    [DataContract]
     class Program
     {
         public Program()
@@ -22,6 +24,7 @@ namespace ServiceLeGrand.Model
             this.rooms = rooms;
         }
 
+        [DataMember]
         private int id;
 
         public int Id
@@ -30,6 +33,7 @@ namespace ServiceLeGrand.Model
             set { id = value; }
         }
 
+        [DataMember]
         private String name;
 
         public String Name
@@ -38,6 +42,7 @@ namespace ServiceLeGrand.Model
             set { name = value; }
         }
 
+        [DataMember]
         private DateTime startHour;
 
         public DateTime StartHour
@@ -46,6 +51,7 @@ namespace ServiceLeGrand.Model
             set { startHour = value; }
         }
 
+        [DataMember]
         private List<Day> workingDays;
 
         public List<Day> WorkingDays
@@ -54,6 +60,7 @@ namespace ServiceLeGrand.Model
             set { workingDays = value; }
         }
 
+        [DataMember]
         private List<Room> rooms;
 
         public List<Room> Rooms

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ServiceLeGrand.Model
 {
+    [DataContract]
     abstract class Equipment
     {
         public Equipment()
@@ -20,6 +22,7 @@ namespace ServiceLeGrand.Model
             this.number = number;
         }
 
+        [DataMember]
         protected int id;
 
         public int Id
@@ -28,6 +31,7 @@ namespace ServiceLeGrand.Model
             set { id = value; }
         }
 
+        [DataMember]
         protected String name;
 
         public String Name
@@ -36,6 +40,7 @@ namespace ServiceLeGrand.Model
             set { name = value; }
         }
 
+        [DataMember]
         protected Boolean state;
 
         public Boolean State
@@ -44,6 +49,7 @@ namespace ServiceLeGrand.Model
             set { state = value; }
         }
 
+        [DataMember]
         protected int number;
 
         public int Number

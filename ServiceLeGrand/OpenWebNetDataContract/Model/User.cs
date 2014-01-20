@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ServiceLeGrand.Model
 {
+    [DataContract]
     class User
     {
         public User()
@@ -21,6 +23,7 @@ namespace ServiceLeGrand.Model
             this.password = password;
         }
 
+        [DataMember]
         private int id;
 
         public int Id
@@ -29,6 +32,7 @@ namespace ServiceLeGrand.Model
             set { id = value; }
         }
 
+        [DataMember]
         private String name;
 
         public String Name
@@ -37,6 +41,7 @@ namespace ServiceLeGrand.Model
             set { name = value; }
         }
 
+        [DataMember]
         private String surname;         
 
         public String Surname
@@ -45,6 +50,7 @@ namespace ServiceLeGrand.Model
             set { surname = value; }
         }
 
+        [DataMember]
         private String mail;
 
         public String Mail
@@ -53,6 +59,7 @@ namespace ServiceLeGrand.Model
             set { mail = value; }
         }
 
+        [DataMember]
         private String password;
 
         public String Password

@@ -59,6 +59,17 @@
   <ItemGroup>
     <Compile Include="CAD\SQLite.cs" />
     <Compile Include="IServiceLeGrand.cs" />
+    <Compile Include="Model\Alarm.cs" />
+    <Compile Include="Model\Consumption.cs" />
+    <Compile Include="Model\Day.cs" />
+    <Compile Include="Model\Equipment.cs" />
+    <Compile Include="Model\Home.cs" />
+    <Compile Include="Model\Light.cs" />
+    <Compile Include="Model\Program.cs" />
+    <Compile Include="Model\Radiator.cs" />
+    <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\Shutter.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLeGrand.cs" />
   </ItemGroup>
