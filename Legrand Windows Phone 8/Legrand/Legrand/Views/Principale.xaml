@@ -1,0 +1,74 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    x:Class="Legrand.View.Principale"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot contient la grille racine où tout le contenu des autres pages est placé-->
+    <Grid x:Name="LayoutRoot">
+        <phone:Panorama Margin="0,0" Loaded="Panorama_Loaded">
+
+            <!--Élément un de panorama-->
+            <phone:PanoramaItem Header="Ma maison">
+                <Grid Background="Transparent">
+                    <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="/Assets/Maison.png"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="325">
+						<Run FontWeight="Bold" FontSize="23" Text="GESTION DE VOTRE MAISON"/>
+						<LineBreak/>
+						<Run FontSize="24" Text="Tout gérer au même endroit"/>
+                    </TextBlock>
+                </Grid>
+            </phone:PanoramaItem>
+
+            <!--Élément deux de panorama-->
+            <phone:PanoramaItem Header="Programmes">
+                <Grid Background="Transparent">
+                    <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="/Assets/Programme.png"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="325">
+						<Run FontSize="24" Text="AJOUTER UN PROGRAMME" FontWeight="Bold"/>
+						<LineBreak/>
+						<Run FontSize="24" Text="Automatisez votre maison"/>
+                    </TextBlock>
+                </Grid>
+            </phone:PanoramaItem>
+
+            <!--Élément trois de panorama-->
+            <phone:PanoramaItem Header="Alarme">
+                <Grid Background="Transparent">
+                    <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="/Assets/Alarme.png"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="325">
+						<Run FontSize="24" Text="GESTION DE L'ALARME" FontWeight="Bold"/>
+						<LineBreak/>
+						<Run FontSize="24" Text="Activez ou désactivez l'alarme"/>
+                    </TextBlock>
+                    <toolkit:ToggleSwitch x:Name="toggle" Header="État de l'alarme :" Margin="0,117,0,437"/>
+                    <TextBlock x:Name="Result" HorizontalAlignment="Left" Margin="10,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="325" />
+                </Grid>
+            </phone:PanoramaItem>
+
+            <!--Élément quatre de panorama-->
+            <phone:PanoramaItem Header="Notifications">
+                <Grid Background="Transparent">
+                    <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="/Assets/Notifications.png"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="325">
+						<Run FontSize="24" Text="CENTRE DE NOTIFICATIONS" FontWeight="Bold"/>
+						<LineBreak/>
+						<Run FontSize="24" Text="Activez ou désactivez les notifications"/>
+                    </TextBlock>
+                </Grid>
+            </phone:PanoramaItem>
+        </phone:Panorama>
+    </Grid>
+
+</phone:PhoneApplicationPage>
