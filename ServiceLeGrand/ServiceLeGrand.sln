@@ -3,6 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLeGrand", "ServiceLeGrand\ServiceLeGrand.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWebNetDataContract", "OpenWebNetDataContract\OpenWebNetDataContract.csproj", "{B1AB1A1C-8E89-440E-82D1-2157F4137E0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWebNetWinForm", "OpenWebNetWinForm\OpenWebNetWinForm.csproj", "{4936FB8B-E965-42C7-A6E6-D1B78FFE5BAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceServiceLegrand", "InterfaceServiceLegrand\InterfaceServiceLegrand.csproj", "{A1BF4E26-2C9F-480B-B88D-F7623C48B19A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerServiceConsole", "ServerServiceConsole\ServerServiceConsole.csproj", "{7D4994CE-5C36-405C-995E-F0B2E778E6B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +21,22 @@ Global
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1AB1A1C-8E89-440E-82D1-2157F4137E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AB1A1C-8E89-440E-82D1-2157F4137E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AB1A1C-8E89-440E-82D1-2157F4137E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AB1A1C-8E89-440E-82D1-2157F4137E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4936FB8B-E965-42C7-A6E6-D1B78FFE5BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4936FB8B-E965-42C7-A6E6-D1B78FFE5BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4936FB8B-E965-42C7-A6E6-D1B78FFE5BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4936FB8B-E965-42C7-A6E6-D1B78FFE5BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1BF4E26-2C9F-480B-B88D-F7623C48B19A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1BF4E26-2C9F-480B-B88D-F7623C48B19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1BF4E26-2C9F-480B-B88D-F7623C48B19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1BF4E26-2C9F-480B-B88D-F7623C48B19A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D4994CE-5C36-405C-995E-F0B2E778E6B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D4994CE-5C36-405C-995E-F0B2E778E6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D4994CE-5C36-405C-995E-F0B2E778E6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D4994CE-5C36-405C-995E-F0B2E778E6B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

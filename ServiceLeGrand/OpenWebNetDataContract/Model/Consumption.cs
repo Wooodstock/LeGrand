@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceLeGrand.Model
+namespace InterfaceServiceLegrand.Model
 {
     [DataContract]
-    class Consumption
+    public class Consumption
     {
         public Consumption()
         {

@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1AB1A1C-8E89-440E-82D1-2157F4137E0E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{7D4994CE-5C36-405C-995E-F0B2E778E6B7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InterfaceServiceLegrand</RootNamespace>
-    <AssemblyName>OpenWebNetDataContract</AssemblyName>
+    <RootNamespace>ServerServiceConsole</RootNamespace>
+    <AssemblyName>ServerServiceConsole</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,7 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,18 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Alarm.cs" />
-    <Compile Include="Model\Consumption.cs" />
-    <Compile Include="Model\Day.cs" />
-    <Compile Include="Model\Equipment.cs" />
-    <Compile Include="Model\Home.cs" />
-    <Compile Include="Model\Light.cs" />
-    <Compile Include="Model\Program.cs" />
-    <Compile Include="Model\Radiator.cs" />
-    <Compile Include="Model\Room.cs" />
-    <Compile Include="Model\Shutter.cs" />
-    <Compile Include="Model\User.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceServer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterfaceServiceLegrand\InterfaceServiceLegrand.csproj">
+      <Project>{a1bf4e26-2c9f-480b-b88d-f7623c48b19a}</Project>
+      <Name>InterfaceServiceLegrand</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceLeGrand\ServiceLeGrand.csproj">
+      <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
+      <Name>ServiceLeGrand</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

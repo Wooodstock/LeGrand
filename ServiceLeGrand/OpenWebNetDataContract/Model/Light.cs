@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceLeGrand.Model
+namespace InterfaceServiceLegrand.Model
 {
     [DataContract]
-    class Light : Equipment
+    public class Light : Equipment
     {
         public Light(int id, String name, Boolean state, int number, int intensity)
         {
