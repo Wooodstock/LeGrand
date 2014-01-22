@@ -28,7 +28,7 @@ namespace OpenWebNetWinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            host = new ServiceHost(typeof(ServiceLeGrand.ServiceHome));
+            host = new ServiceHost(typeof(ServiceLeGrand.OpenWebNet));
             host.Open();
         }
 

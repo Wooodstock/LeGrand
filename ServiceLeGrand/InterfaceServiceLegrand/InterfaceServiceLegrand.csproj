@@ -7,7 +7,7 @@
     <ProjectGuid>{A1BF4E26-2C9F-480B-B88D-F7623C48B19A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InterfaceServiceLegrand</RootNamespace>
+    <RootNamespace>OpenWebNetDataContract</RootNamespace>
     <AssemblyName>InterfaceServiceLegrand</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IOpenWebNet.cs" />
     <Compile Include="IServiceHome.cs" />
     <Compile Include="IServiceLeGrand.cs" />
     <Compile Include="IServiceProgram.cs" />

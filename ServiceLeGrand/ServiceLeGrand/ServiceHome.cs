@@ -4,7 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using InterfaceServiceLegrand.Model;
+using OpenWebNetDataContract.Model;
 using InterfaceServiceLegrand;
 
 namespace ServiceLeGrand
