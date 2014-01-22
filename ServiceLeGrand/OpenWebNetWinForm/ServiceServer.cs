@@ -13,7 +13,7 @@ namespace OpenWebNetWinForm
 
         public void startService()
         {
-            host = new ServiceHost(typeof(ServiceLeGrand.ServiceHome));
+            host = new ServiceHost(typeof(ServiceLeGrand.OpenWebNet));
 
             try
             {
