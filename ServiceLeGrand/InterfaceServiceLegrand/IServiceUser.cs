@@ -21,7 +21,7 @@ namespace InterfaceServiceLegrand
         User updateUser(User user);
 
         [OperationContract]
-        Boolean connectUser(String login, String password);
+        Boolean connectUser(String mail, String password);
 
         [OperationContract]
         Boolean logout();
