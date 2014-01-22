@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -85,6 +85,10 @@
     <ProjectReference Include="..\InterfaceServiceLegrand\InterfaceServiceLegrand.csproj">
       <Project>{a1bf4e26-2c9f-480b-b88d-f7623c48b19a}</Project>
       <Name>InterfaceServiceLegrand</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenWebNetDataContract\OpenWebNetDataContract.csproj">
+      <Project>{b1ab1a1c-8e89-440e-82d1-2157f4137e0e}</Project>
+      <Name>OpenWebNetDataContract</Name>
     </ProjectReference>
     <ProjectReference Include="..\ServiceLeGrand\ServiceLeGrand.csproj">
       <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>

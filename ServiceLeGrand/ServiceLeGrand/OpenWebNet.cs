@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenWebNetDataContract.Model;
 using InterfaceServiceLegrand;
+using System.Data;
 
 namespace ServiceLeGrand
 {
@@ -109,7 +110,56 @@ namespace ServiceLeGrand
 
         public User addUser(string name, string surname, string mail, string password)
         {
-            throw new NotImplementedException();
+            CAD.SQLite db;
+
+            //TODO: Check if user deja en base
+
+            try
+            {
+                //Ajout de l'user en base
+                db = new CAD.SQLite();
+                String InsertQuery = "INSERT INTO User (Name, Surname, Mail, Password) VALUES ('" + name + "', '" + surname + "', '" + mail + "', '" + password + "');";
+                int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
+
+                //Recuperation de l'id de l'user (mail doit etre unique)
+                if (rowsUpdated > 0)
+                {
+                    DataTable result;
+                    String selectQuery = "SELECT Id FROM User WHERE Mail = '" + mail + "'";
+                    result = db.GetDataTable(selectQuery);
+                    int id = 0;
+
+                    foreach (DataRow r in result.Rows)
+                    {
+                        id = int.Parse(r["Id"].ToString());
+                    }
+
+                    //Creation de lobjet User
+                    if (id != 0)
+                    {
+                        User user = new User(id, name, surname, mail, password);
+                        Console.WriteLine("New User Created");
+                        return user;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Erreur creation User");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Erreur creation User");
+                    return null;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "Erreur creation User - The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return null;
+            }
         }
 
         public bool removeUser(User user)
@@ -122,9 +172,40 @@ namespace ServiceLeGrand
             throw new NotImplementedException();
         }
 
-        public bool connectUser(string login, string password)
+        public bool connectUser(string mail, string password)
         {
-            throw new NotImplementedException();
+            CAD.SQLite db;
+            String dbPassword;
+
+            try
+            {
+                db = new CAD.SQLite();
+                DataTable result;
+                String query = "SELECT Password FROM User WHERE Mail = '" + mail + "'";
+                result = db.GetDataTable(query);
+                dbPassword = "password";
+
+                // boucle resultat reauete
+                foreach (DataRow r in result.Rows)
+                {
+                    dbPassword = r["Password"].ToString();
+                }
+
+                if (password.Equals(dbPassword))
+                {
+                    Console.WriteLine("User " + mail + " connected");
+                    //Connexionn SUCCES
+                    return true;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
+            return false;
         }
 
         public bool logout()

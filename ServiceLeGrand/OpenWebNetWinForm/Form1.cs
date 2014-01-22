@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceLeGrand;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,6 +35,18 @@ namespace OpenWebNetWinForm
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            /*Test AddUser
+            OpenWebNet o = new OpenWebNet();
+            OpenWebNetDataContract.Model.User user = new OpenWebNetDataContract.Model.User();
+            user = o.addUser("test", "test", "mail@mail.mail", "password");
+            Console.WriteLine("STOP");
+            //*/
+
 
         }
     }
