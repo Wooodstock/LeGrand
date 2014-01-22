@@ -5,11 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenWebNetDataContract.Model;
 using InterfaceServiceLegrand;
-<<<<<<< HEAD
 using ServiceLeGrand.WallAccess;
-=======
 using System.Data;
->>>>>>> f9fdd06dacaba4bc5c33c75268bbf471fa9d1f24
 
 namespace ServiceLeGrand
 {
