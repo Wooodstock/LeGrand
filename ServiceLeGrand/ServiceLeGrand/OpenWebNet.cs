@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenWebNetDataContract.Model;
 using InterfaceServiceLegrand;
+using ServiceLeGrand.WallAccess;
 
 namespace ServiceLeGrand
 {
     public class OpenWebNet : IOpenWebNet
     {
+        private OpenWebNetGateway openWebNet;
+
         #region Services Home
 
         public Home addHome(List<Room> rooms, string name, float surface, float volume)
@@ -100,6 +103,57 @@ namespace ServiceLeGrand
 
         public Equipment updateEquipment(Equipment equipment)
         {
+
+            if (equipment is Radiator) {
+                // ########## The DataBase Side ###########
+                // TODO
+
+                // ##########  The Wall Side ###########
+                // TODO
+            }
+            else if (equipment is Light) {
+                // ########## The DataBase Side ###########
+                // TODO
+                
+
+
+                // ##########  The Wall Side ###########
+                // TODO
+
+                Light light = (Light)equipment;
+
+                Boolean stateChanged = true; // 
+                /* Soit vérifié état de l'object courant par rapport a celui en base
+                 * soit vérifié état de l'équipement avec le mur.
+                 * /
+
+                if (!light.State && stateChanged)
+                {
+                    openWebNet.LightingLightOFF(light.Number.ToString());
+                }
+                else { 
+                    openWebNet.LightingLightON(light.Number.ToString());
+                }
+                
+
+            }
+            else if (equipment is Shutter) {
+                // ########## The DataBase Side ###########
+                // TODO
+
+                // ##########  The Wall Side ###########
+                // TODO
+            
+            } 
+            else if (equipment is Alarm){
+                // ########## The DataBase Side ###########
+                // TODO
+
+                // ##########  The Wall Side ###########
+                // TODO
+                
+            }
+
             throw new NotImplementedException();
         }
 
