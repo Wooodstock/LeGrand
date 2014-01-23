@@ -12,7 +12,10 @@ namespace ServiceLeGrand
 {
     public class OpenWebNet : IOpenWebNet
     {
+        private Home home;
+        private User user;
         private OpenWebNetGateway openWebNet;
+
 
         #region Services Home
 
@@ -123,7 +126,7 @@ namespace ServiceLeGrand
 
                 Light light = (Light)equipment;
 
-                Boolean stateChanged = true;
+                Boolean stateChanged = true; 
                 /* Soit vérifié état de l'object courant par rapport a celui en base
                  * soit vérifié état de l'équipement avec le mur.
                  */
@@ -218,16 +221,71 @@ namespace ServiceLeGrand
 
         public bool removeUser(User user)
         {
-            throw new NotImplementedException();
+            CAD.SQLite db;
+
+            try
+            {
+                db = new CAD.SQLite();
+                int updatedRow = 0;
+                String query = "DELETE FROM User WHERE Id = "+ user.Id +";";
+
+                updatedRow = db.ExecuteNonQuery(query);
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("User deleted");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error: User was not deleted");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
         }
 
-        public User updateUser(User user)
+        public Boolean updateUser(User user)
         {
-            throw new NotImplementedException();
+            CAD.SQLite db;
+            try
+            {
+                db = new CAD.SQLite();
+                int updatedRow = 0;
+                String query = "UPDATE User SET Name=" + user.Name + ", Surname=" + user.Surname + ", Mail=" + user.Mail + ", Password=" + user.Password + " WHERE Id=" + user.Id + ";";
+
+                updatedRow = db.ExecuteNonQuery(query);
+
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("user updated");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("error: user not updated");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
         }
 
-        public bool connectUser(string mail, string password)
+        public Boolean connectUser(string mail, string password)
         {
+
+            //TODO: Return user & this.user = user;
+
             CAD.SQLite db;
             String dbPassword;
 
@@ -264,7 +322,8 @@ namespace ServiceLeGrand
 
         public bool logout()
         {
-            throw new NotImplementedException();
+            this.user = null;
+            return true;
         }
 
         #endregion
