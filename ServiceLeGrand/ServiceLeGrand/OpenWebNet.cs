@@ -123,10 +123,10 @@ namespace ServiceLeGrand
 
                 Light light = (Light)equipment;
 
-                Boolean stateChanged = true; // 
+                Boolean stateChanged = true;
                 /* Soit vérifié état de l'object courant par rapport a celui en base
                  * soit vérifié état de l'équipement avec le mur.
-                 * /
+                 */
 
                 if (!light.State && stateChanged)
                 {
