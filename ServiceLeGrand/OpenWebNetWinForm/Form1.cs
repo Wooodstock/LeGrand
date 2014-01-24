@@ -1,4 +1,4 @@
-﻿using ServiceLeGrand;
+﻿using ServiceLegrand;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +9,8 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OpenWebNetDataContract.Model;
+using ServiceLegrand;
 
 namespace OpenWebNetWinForm
 {
@@ -29,7 +31,7 @@ namespace OpenWebNetWinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            host = new ServiceHost(typeof(ServiceLeGrand.OpenWebNet));
+            host = new ServiceHost(typeof(ServiceLegrand.ServiceLegrand));
             host.Open();
         }
 
@@ -40,12 +42,18 @@ namespace OpenWebNetWinForm
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            /*Test AddUser
-            OpenWebNet o = new OpenWebNet();
-            OpenWebNetDataContract.Model.User user = new OpenWebNetDataContract.Model.User();
-            user = o.addUser("test", "test", "mail@mail.mail", "password");
+            ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
+
+            //Test AddUser
+            /*User user = new User();
+            user = o.addUser("test", "test", "mail@mail.mail", "password");*/
+
+            OpenWebNetDataContract.Model.Program program = new OpenWebNetDataContract.Model.Program();
+            program = o.
+            program = o.addProgram("name", DateTime.Now, null, null);
+
             Console.WriteLine("STOP");
-            //*/
+            
 
 
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -66,6 +67,169 @@ namespace OpenWebNetDataContract.Model
         {
             get { return password; }
             set { password = value; }
+        }
+
+        User add(String name, String surname, String mail, String password) {
+            CAD.SQLite db;
+
+            //TODO: Check if user deja en base
+
+            try
+            {
+                //Ajout de l'user en base
+                db = new CAD.SQLite();
+                String InsertQuery = "INSERT INTO User (Name, Surname, Mail, Password) VALUES ('" + name + "', '" + surname + "', '" + mail + "', '" + password + "');";
+                int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
+
+                //Recuperation de l'id de l'user (mail doit etre unique)
+                if (rowsUpdated > 0)
+                {
+                    DataTable result;
+                    String selectQuery = "SELECT Id FROM User WHERE Mail = '" + mail + "'";
+                    result = db.GetDataTable(selectQuery);
+                    int id = 0;
+
+                    foreach (DataRow r in result.Rows)
+                    {
+                        id = int.Parse(r["Id"].ToString());
+                    }
+
+                    //Creation de lobjet User
+                    if (id != 0)
+                    {
+                        User user = new User(id, name, surname, mail, password);
+                        Console.WriteLine("New User Created");
+                        return user;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Erreur creation User");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Erreur creation User");
+                    return null;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "Erreur creation User - The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return null;
+            }
+        }
+
+        public bool removeUser(User user)
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = new CAD.SQLite();
+                int updatedRow = 0;
+                String query = "DELETE FROM User WHERE Id = " + user.Id + ";";
+
+                updatedRow = db.ExecuteNonQuery(query);
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("User deleted");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error: User was not deleted");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
+        }
+
+        Boolean remove(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        Boolean update(User user)
+        {
+            CAD.SQLite db;
+            try
+            {
+                db = new CAD.SQLite();
+                int updatedRow = 0;
+                String query = "UPDATE User SET Name=" + user.Name + ", Surname=" + user.Surname + ", Mail=" + user.Mail + ", Password=" + user.Password + " WHERE Id=" + user.Id + ";";
+
+                updatedRow = db.ExecuteNonQuery(query);
+
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("user updated");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("error: user not updated");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
+        }
+
+        Boolean connect(String mail, String password)
+        {
+            //TODO: Return user & this.user = user;
+
+            CAD.SQLite db;
+            String dbPassword;
+
+            try
+            {
+                db = new CAD.SQLite();
+                DataTable result;
+                String query = "SELECT Password FROM User WHERE Mail = '" + mail + "'";
+                result = db.GetDataTable(query);
+                dbPassword = "password";
+
+                // boucle resultat reauete
+                foreach (DataRow r in result.Rows)
+                {
+                    dbPassword = r["Password"].ToString();
+                }
+
+                if (password.Equals(dbPassword))
+                {
+                    Console.WriteLine("User " + mail + " connected");
+                    //Connexionn SUCCES
+                    return true;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
+            return false;
+        }
+
+        Boolean logout()
+        {
+            return true;
         }
     }
 }

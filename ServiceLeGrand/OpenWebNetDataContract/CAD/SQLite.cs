@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
 
-namespace ServiceLegrand.CAD
+namespace OpenWebNetDataContract.CAD
 {
     class SQLite
     {

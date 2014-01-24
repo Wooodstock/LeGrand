@@ -68,7 +68,21 @@ namespace OpenWebNetDataContract.Model
             get { return volume; }
             set { volume = value; }
         }
-        
+
+        Home add(List<Room> rooms, String name, float surface, float volume)
+        {
+            throw new NotImplementedException();
+        }
+
+        Boolean remove(Home home)
+        {
+            throw new NotImplementedException();
+        }
+
+        Home update(Home home)
+        {
+            throw new NotImplementedException();
+        }
         
     }
 }

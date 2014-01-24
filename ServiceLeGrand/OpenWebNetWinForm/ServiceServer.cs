@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
-using ServiceLeGrand;
+using ServiceLegrand;
 
 namespace OpenWebNetWinForm
 {
@@ -14,7 +14,7 @@ namespace OpenWebNetWinForm
 
         public void startService()
         {
-            host = new ServiceHost(typeof(ServiceLeGrand.OpenWebNet));
+            host = new ServiceHost(typeof(ServiceLegrand.ServiceLegrand));
 
             try
             {

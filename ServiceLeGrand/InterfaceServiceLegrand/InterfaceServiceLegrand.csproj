@@ -42,12 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOpenWebNet.cs" />
-    <Compile Include="IServiceHome.cs" />
     <Compile Include="IServiceLeGrand.cs" />
-    <Compile Include="IServiceProgram.cs" />
-    <Compile Include="IServiceRoom.cs" />
-    <Compile Include="IServiceUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

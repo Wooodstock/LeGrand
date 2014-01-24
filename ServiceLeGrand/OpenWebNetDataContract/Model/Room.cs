@@ -69,10 +69,21 @@ namespace OpenWebNetDataContract.Model
             get { return consumption; }
             set { consumption = value; }
         }
-        
-        
-        
-        
-        
+
+        Room add(String name, float surface, List<Equipment> equipments, Consumption consumption)
+        {
+            throw new NotImplementedException();
+        }
+
+        Boolean remove(Room room)
+        {
+            throw new NotImplementedException();
+        }
+
+        Room update(Room room)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
