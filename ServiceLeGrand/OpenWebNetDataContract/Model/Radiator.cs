@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using OpenWebNetDataContract.Gateway;
 
 namespace OpenWebNetDataContract.Model
 {
@@ -26,6 +27,16 @@ namespace OpenWebNetDataContract.Model
         {
             get { return temperature; }
             set { temperature = value; }
+        }
+
+        public void HeatingSetZoneAuto(string where)
+        {
+            OpenWebNetGateway.SendCommand(WHO.Heating, "311", string.Format("#{0}", where));
+        }
+
+        public void HeatingSetZoneOFF(string where)
+        {
+            OpenWebNetGateway.SendCommand(WHO.Heating, "303", string.Format("#{0}", where));
         }
     }
 }

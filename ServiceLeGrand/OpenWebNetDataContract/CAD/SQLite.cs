@@ -8,7 +8,7 @@ using System.Data.SQLite;
 
 namespace OpenWebNetDataContract.CAD
 {
-    class SQLite
+    public class SQLite
     {
         String dbConnection;
 

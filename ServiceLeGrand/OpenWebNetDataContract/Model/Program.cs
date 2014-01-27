@@ -102,12 +102,9 @@ namespace OpenWebNetDataContract.Model
                     {
 
 
-                        Program user = new Program(id, name, startHour, null, null);
-                        Console.WriteLine("New User Created");
-                        return user;
-
-                        Console.WriteLine("New Program");
-                        return null;
+                        Program program = new Program(id, name, startHour, null, null);
+                        Console.WriteLine("New Program Created");
+                        return program;
                     }
                     else
                     {

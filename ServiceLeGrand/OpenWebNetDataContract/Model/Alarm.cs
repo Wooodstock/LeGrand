@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using OpenWebNetDataContract.Gateway;
 
 namespace OpenWebNetDataContract.Model
 {
@@ -16,6 +17,26 @@ namespace OpenWebNetDataContract.Model
             this.name = name;
             this.state = state;
             this.number = number;
+        }
+
+        public void AlarmGetZoneStatus(int n)
+        {
+            if (n < 1 || n > 8)
+                throw new ArgumentOutOfRangeException("N value wrong");
+
+            OpenWebNetGateway.GetStateCommand(WHO.Alarm, string.Format("#{0}", n.ToString()));
+        }
+
+        public void AlarmGetCentralUnitStatus()
+        {
+            OpenWebNetGateway.GetStateCommand(WHO.Alarm, "");
+        }
+
+        public void AlarmGetAuxiliaresStatus()
+        {
+            throw new NotImplementedException();
+
+            //GetStateCommand(9, "");
         }
     }
 }

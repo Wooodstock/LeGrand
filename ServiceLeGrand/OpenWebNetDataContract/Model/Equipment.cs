@@ -1,14 +1,16 @@
-﻿using System;
+﻿using OpenWebNetDataContract.Gateway;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using OpenWebNetDataContract.CAD;
 
 namespace OpenWebNetDataContract.Model
 {
     [DataContract]
-    public abstract class Equipment
+    public abstract class Equipment : AbstractGateway
     {
         public Equipment()
         {

@@ -7,7 +7,7 @@ using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceLegrand.WallAccess
+namespace OpenWebNetDataContract.Gateway
 {
     #region Enumeration
 
