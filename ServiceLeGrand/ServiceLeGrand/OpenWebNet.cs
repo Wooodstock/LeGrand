@@ -21,17 +21,128 @@ namespace ServiceLeGrand
 
         public Home addHome(List<Room> rooms, string name, float surface, float volume)
         {
-            throw new NotImplementedException();
+            CAD.SQLite db;
+
+            try
+            {
+                db = new CAD.SQLite();
+                String querry = "INSERT INTO Home (Name, Surface, Volume) VALUES ('" + name + "', '" + surface + "', '" + volume + "')";
+                int updatedRow = 0;
+
+                updatedRow = db.ExecuteNonQuery(querry);
+
+                if (updatedRow > 0)
+                {
+                    //recuperation de lid
+                    DataTable result;
+                    String selectQuery = "SELECT Id FROM Home";
+                    result = db.GetDataTable(selectQuery);
+                    int id = 0;
+
+                    foreach (DataRow r in result.Rows)
+                    {
+                        id = int.Parse(r["Id"].ToString());
+                    }
+
+                    //Creation de lobjet Home
+                    if (id != 0)
+                    {
+                        Home home = new Home(id, name, rooms, surface, volume);
+                        Console.WriteLine("New Home Created");
+                        return home;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Erreur creation Home");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Erreur creation Home");
+                    return null;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "Erreur creation User - The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return null;
+            }
+
         }
 
         public bool removeHome(Home home)
         {
-            throw new NotImplementedException();
+            CAD.SQLite db;
+
+            try
+            {
+                db = new CAD.SQLite();
+                int updatedRow = 0;
+                String query = "DELETE FROM Home WHERE Id = " + user.Id + ";";
+
+                updatedRow = db.ExecuteNonQuery(query);
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("Home deleted");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Home was not deleted");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
         }
 
         public Home updateHome(Home home)
         {
-            throw new NotImplementedException();
+            //Lister les pieces et update
+
+            //BDD
+
+            //
+            CAD.SQLite db;
+            try
+            {
+                db = new CAD.SQLite();
+                int updatedRow = 0;
+                String query = "UPDATE HOME SET Name=" + user.Name + ", Surface=" + user.Surname + ", Volume=" + user.Mail + ", Password=" + user.Password + " WHERE Id=" + user.Id + ";";
+
+                updatedRow = db.ExecuteNonQuery(query);
+
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("user updated");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("error: user not updated");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
+
+            //WALL
+
+
+
         }
 
         #endregion
@@ -78,6 +189,17 @@ namespace ServiceLeGrand
 
         public Room addRoom(string name, float surface, List<Equipment> equipments, Consumption consumption)
         {
+            /*
+            CAD.SQLite db;
+
+            try
+            {
+                db = new CAD.SQLite();
+                String querry = "INSERT INTO Room (Name, Surface, )"
+
+            }
+             * */
+
             throw new NotImplementedException();
         }
 

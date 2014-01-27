@@ -15,7 +15,7 @@ namespace ServiceLeGrand.CAD
         //Default constructor
         public SQLite()
         {
-            dbConnection = "Data Source=base";
+            dbConnection = "Data Source=base.sqlite";
         }
 
         //Constructor for specifing a file
@@ -24,6 +24,17 @@ namespace ServiceLeGrand.CAD
             dbConnection = String.Format("Data Source={0}", inputFile);
         }
 
+
+        public serviceHome(string order, Home home)
+        {
+            switch(order)
+            {
+                case "update" :
+                    this.home = this.home.update(home);
+
+
+            }
+        }
         //execute a querry. return a datatable
         public DataTable GetDataTable(string sql)
         {

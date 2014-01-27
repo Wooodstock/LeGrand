@@ -29,8 +29,15 @@ namespace OpenWebNetWinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            host = new ServiceHost(typeof(ServiceLeGrand.OpenWebNet));
-            host.Open();
+            try
+            {
+                host = new ServiceHost(typeof(ServiceLeGrand.OpenWebNet));
+                host.Open();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,6 +52,20 @@ namespace OpenWebNetWinForm
             OpenWebNetDataContract.Model.User user = new OpenWebNetDataContract.Model.User();
             user = o.addUser("test", "test", "mail@mail.mail", "password");
             Console.WriteLine("STOP");
+            //*/
+
+            /*Test Del user
+            OpenWebNet o = new OpenWebNet();
+            OpenWebNetDataContract.Model.User user = new OpenWebNetDataContract.Model.User();
+            user.Id = 3;
+            if (o.removeUser(user))
+            {
+                Console.WriteLine("Test succes!");
+            }
+            else
+            {
+                Console.WriteLine("Test failed!");
+            }
             //*/
 
 
