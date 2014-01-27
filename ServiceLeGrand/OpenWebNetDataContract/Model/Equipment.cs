@@ -10,7 +10,7 @@ using OpenWebNetDataContract.CAD;
 namespace OpenWebNetDataContract.Model
 {
     [DataContract]
-    public abstract class Equipment : AbstractGateway
+    public abstract class Equipment
     {
         public Equipment()
         {
@@ -22,6 +22,22 @@ namespace OpenWebNetDataContract.Model
             this.name = name;
             this.state = state;
             this.number = number;
+        }
+
+        private OpenWebNetGateway openWebNetGateway;
+
+        public OpenWebNetGateway OpenWebNetGateway
+        {
+            get { return openWebNetGateway; }
+            set { openWebNetGateway = value; }
+        }
+
+        private SQLite sqLite;
+
+        public SQLite SqLite
+        {
+            get { return sqLite; }
+            set { sqLite = value; }
         }
 
         [DataMember]
