@@ -69,7 +69,7 @@ namespace OpenWebNetDataContract.Model
             set { password = value; }
         }
 
-        User add(String name, String surname, String mail, String password) {
+        public User add(String name, String surname, String mail, String password) {
             CAD.SQLite db;
 
             //TODO: Check if user deja en base
@@ -77,7 +77,7 @@ namespace OpenWebNetDataContract.Model
             try
             {
                 //Ajout de l'user en base
-                db = new CAD.SQLite();
+                db = CAD.SQLite.getInstance();
                 String InsertQuery = "INSERT INTO User (Name, Surname, Mail, Password) VALUES ('" + name + "', '" + surname + "', '" + mail + "', '" + password + "');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
@@ -128,7 +128,7 @@ namespace OpenWebNetDataContract.Model
 
             try
             {
-                db = new CAD.SQLite();
+                db = CAD.SQLite.getInstance();
                 int updatedRow = 0;
                 String query = "DELETE FROM User WHERE Id = " + user.Id + ";";
 
@@ -153,17 +153,17 @@ namespace OpenWebNetDataContract.Model
             }
         }
 
-        Boolean remove(User user)
+        public Boolean remove(User user)
         {
             throw new NotImplementedException();
         }
 
-        Boolean update(User user)
+        public Boolean update(User user)
         {
             CAD.SQLite db;
             try
             {
-                db = new CAD.SQLite();
+                db = CAD.SQLite.getInstance();
                 int updatedRow = 0;
                 String query = "UPDATE User SET Name=" + user.Name + ", Surname=" + user.Surname + ", Mail=" + user.Mail + ", Password=" + user.Password + " WHERE Id=" + user.Id + ";";
 
@@ -189,7 +189,7 @@ namespace OpenWebNetDataContract.Model
             }
         }
 
-        Boolean connect(String mail, String password)
+        public Boolean connect(String mail, String password)
         {
             //TODO: Return user & this.user = user;
 
@@ -198,7 +198,7 @@ namespace OpenWebNetDataContract.Model
 
             try
             {
-                db = new CAD.SQLite();
+                db = CAD.SQLite.getInstance();
                 DataTable result;
                 String query = "SELECT Password FROM User WHERE Mail = '" + mail + "'";
                 result = db.GetDataTable(query);
@@ -227,7 +227,7 @@ namespace OpenWebNetDataContract.Model
             return false;
         }
 
-        Boolean logout()
+        public Boolean logout()
         {
             return true;
         }

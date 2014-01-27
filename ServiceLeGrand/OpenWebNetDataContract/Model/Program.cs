@@ -79,7 +79,7 @@ namespace OpenWebNetDataContract.Model
             try
             {
                 //Ajout de l'user en base
-                db = new CAD.SQLite();
+                db = CAD.SQLite.getInstance();
                 String startHourFormat = startHour.ToString("yyyy-MM-dd HH:mm:ss");
                 String InsertQuery = "INSERT INTO Program (Name, StartHour) VALUES ('" + name + "', '" + startHourFormat + "');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
