@@ -109,9 +109,13 @@ namespace OpenWebNetDataContract.Gateway
         internal const string PROT_MON = "*99*1##";
         internal const string PROT_SCMD = "*99*9##";
 
+        //SingleTon
+        private static OpenWebNetGateway _instance;
+        static readonly object instanceLock = new object();
+
         #endregion
 
-        public OpenWebNetGateway(string host, int port, OpenSocketType socketType)
+        private OpenWebNetGateway(string host, int port, OpenSocketType socketType)
         {
             int[] values;
             string[] names;
@@ -139,6 +143,21 @@ namespace OpenWebNetDataContract.Gateway
             this.dataToSend = string.Empty;
             this.onDataReady = new AsyncCallback(OnDataReady);
             this.onSendData = new AsyncCallback(OnSendData);
+        }
+
+        //Singleton
+        public static OpenWebNetGateway getInstance(string host, int port, OpenSocketType socketType)
+        {
+            if (_instance == null)
+            {
+                lock (instanceLock)
+                {
+                    if (_instance == null)
+                        _instance = new OpenWebNetGateway(host, port, socketType);
+                }
+            }
+
+            return _instance;
         }
 
         #region Public Properties

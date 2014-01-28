@@ -12,17 +12,37 @@ namespace OpenWebNetDataContract.CAD
     {
         String dbConnection;
 
+        //SingleTon
+        private static SQLite _instance;
+        static readonly object instanceLock = new object();
+
         //Default constructor
-        public SQLite()
+        private SQLite()
         {
             dbConnection = "Data Source=base.sqlite";
         }
 
-        //Constructor for specifing a file
-        public SQLite(String inputFile)
+        public static SQLite getInstance()
+        {
+            if (_instance == null) //Les locks prennent du temps, il est préférable de vérifier d'abord la nullité de l'instance.
+            {
+                lock (instanceLock)
+                {
+                    if (_instance == null) //on vérifie encore, au cas où l'instance aurait été créée entretemps.
+                        _instance = new SQLite();
+                }
+            }
+
+            return _instance;
+        }
+
+        //Constructor for specifing a file (obsolete use getInstance)
+        /*
+        private SQLite(String inputFile)
         {
             dbConnection = String.Format("Data Source={0}", inputFile);
         }
+         * */
 
         //execute a querry. return a datatable
         public DataTable GetDataTable(string sql)
