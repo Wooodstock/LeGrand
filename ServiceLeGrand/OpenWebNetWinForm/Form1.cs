@@ -51,13 +51,6 @@ namespace OpenWebNetWinForm
             light.OpenWebNetGateway.Connect();
             light.LightingLightOFF("1");*/
 
-            /*ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
-            ///*
-            ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
-
-            ///*
-            ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
-
             //Test AddUser
             User user = new User();
             user = user.add("test42", "test42", "mai42l@mail.mail", "password42");
