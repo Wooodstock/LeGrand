@@ -1,4 +1,4 @@
-﻿using ServiceLegrand;
+using ServiceLegrand;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,14 +41,11 @@ namespace OpenWebNetWinForm
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            ///*
-            ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
-
             //Test AddUser
             User user = new User();
             user = user.add("test42", "test42", "mai42l@mail.mail", "password42");
 
-            OpenWebNetDataContract.Model.Program program = new OpenWebNetDataContract.Model.Program();
+            OpenWebNetDataContract.Model.Program program = new 			OpenWebNetDataContract.Model.Program();
 
             Console.WriteLine("STOP");
             //*/
