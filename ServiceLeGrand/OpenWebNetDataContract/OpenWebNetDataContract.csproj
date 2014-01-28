@@ -68,7 +68,6 @@
     <Compile Include="Gateway\OpenWebNetGateway.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
