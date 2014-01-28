@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenWebNetDataContract.Model;
-using OpenWebNetDataContract.Gateway;
 
 namespace OpenWebNetWinForm
 {
@@ -38,23 +37,10 @@ namespace OpenWebNetWinForm
         private void button1_Click(object sender, EventArgs e)
         {
 
-
-            
         }
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-
-            /*
-            Light light = new Light(0, "Light_Salon", false, 1, 50);
-            light.OpenWebNetGateway = new OpenWebNetGateway("172.16.0.209", 20000, OpenSocketType.Command);
-            light.OpenWebNetGateway.Connect();
-            light.LightingLightOFF("1");*/
-
-            /*ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
-            ///*
-            ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
-
             ///*
             ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
 

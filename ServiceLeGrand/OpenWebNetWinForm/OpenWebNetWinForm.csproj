@@ -97,6 +97,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="img\bg_home.jpg" />
     <None Include="img\bg_main.jpg" />
     <Content Include="img\bg_users.jpg" />
     <None Include="img\legrand_logo.jpg" />

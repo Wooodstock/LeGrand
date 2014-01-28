@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.buttonTest = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMaison = new System.Windows.Forms.TabPage();
@@ -55,26 +55,22 @@
             this.btndelUser = new System.Windows.Forms.Button();
             this.btnaddUser = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lbpiece = new System.Windows.Forms.Label();
+            this.tbaddPiece = new System.Windows.Forms.TextBox();
+            this.btnaddPiece = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabMaison.SuspendLayout();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(31, 25);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 19);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Start Services";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // buttonTest
             // 
-            this.buttonTest.Location = new System.Drawing.Point(31, 48);
+            this.buttonTest.Location = new System.Drawing.Point(182, 77);
             this.buttonTest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(92, 19);
@@ -97,8 +93,14 @@
             // tabMaison
             // 
             this.tabMaison.BackColor = System.Drawing.Color.Black;
-            this.tabMaison.Controls.Add(this.buttonTest);
+            this.tabMaison.BackgroundImage = global::OpenWebNetWinForm.Properties.Resources.bg_home;
+            this.tabMaison.Controls.Add(this.label1);
             this.tabMaison.Controls.Add(this.button1);
+            this.tabMaison.Controls.Add(this.comboBox1);
+            this.tabMaison.Controls.Add(this.btnaddPiece);
+            this.tabMaison.Controls.Add(this.lbpiece);
+            this.tabMaison.Controls.Add(this.tbaddPiece);
+            this.tabMaison.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.tabMaison.Location = new System.Drawing.Point(4, 22);
             this.tabMaison.Name = "tabMaison";
             this.tabMaison.Padding = new System.Windows.Forms.Padding(3);
@@ -328,12 +330,66 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // lbpiece
+            // 
+            this.lbpiece.AutoSize = true;
+            this.lbpiece.Location = new System.Drawing.Point(57, 158);
+            this.lbpiece.Name = "lbpiece";
+            this.lbpiece.Size = new System.Drawing.Size(79, 13);
+            this.lbpiece.TabIndex = 101;
+            this.lbpiece.Text = "Nom de la pièce";
+            // 
+            // tbaddPiece
+            // 
+            this.tbaddPiece.Location = new System.Drawing.Point(142, 155);
+            this.tbaddPiece.Name = "tbaddPiece";
+            this.tbaddPiece.Size = new System.Drawing.Size(169, 21);
+            this.tbaddPiece.TabIndex = 1;
+            // 
+            // btnaddPiece
+            // 
+            this.btnaddPiece.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnaddPiece.Location = new System.Drawing.Point(60, 183);
+            this.btnaddPiece.Name = "btnaddPiece";
+            this.btnaddPiece.Size = new System.Drawing.Size(251, 23);
+            this.btnaddPiece.TabIndex = 2;
+            this.btnaddPiece.Text = "Ajouter";
+            this.btnaddPiece.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(508, 155);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(169, 21);
+            this.comboBox1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(426, 182);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(251, 21);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Modifier";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(423, 158);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 105;
+            this.label1.Text = "Nom de la pièce";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(772, 536);
+            this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -342,6 +398,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabMaison.ResumeLayout(false);
+            this.tabMaison.PerformLayout();
             this.tabUsers.ResumeLayout(false);
             this.tabUsers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -351,7 +408,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonTest;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabMaison;
@@ -378,6 +434,13 @@
         private System.Windows.Forms.TextBox tbupdatePrenom;
         private System.Windows.Forms.Button btnupdateUser;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnaddPiece;
+        private System.Windows.Forms.Label lbpiece;
+        private System.Windows.Forms.TextBox tbaddPiece;
     }
 }
 
