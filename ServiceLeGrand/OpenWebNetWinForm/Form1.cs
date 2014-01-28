@@ -52,6 +52,8 @@ namespace OpenWebNetWinForm
             light.LightingLightOFF("1");*/
 
             /*ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
+            ///*
+            ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
 
             ///*
             ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
