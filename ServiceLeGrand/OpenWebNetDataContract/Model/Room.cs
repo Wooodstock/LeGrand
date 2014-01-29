@@ -193,9 +193,9 @@ namespace OpenWebNetDataContract.Model
                             }
                         }
 
-                        Room room = new Room(id, name, surface, equipments, consumption);
+                        this.id = id;
                         Console.WriteLine("New Room Created");
-                        return room;
+                        return this;
                     }
                     else
                     {

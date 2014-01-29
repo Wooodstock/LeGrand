@@ -13,12 +13,8 @@ namespace OpenWebNetDataContract.Model
     [DataContract]
     public class Light : Equipment
     {
-        public Light(int id, String name, Boolean state, int number, int intensity)
+        public Light(int id, String name, Boolean state, int number, int intensity, Room parent) : base(id, name, state, number, parent)
         {
-            this.id = id;
-            this.name = name;
-            this.state = state;
-            this.number = number;
             this.intensity = intensity;
         }
 
@@ -31,14 +27,14 @@ namespace OpenWebNetDataContract.Model
             set { intensity = value; }
         }
 
-        public Light add(String name, Boolean state, int number, int intensity, int id_room)
+        public Light add()
         {
             CAD.SQLite db;
             try
             {
                 //Ajout de la light en base
                 db = CAD.SQLite.getInstance();
-                String InsertQuery = "INSERT INTO Light (Name, State, Intensity, Id_Room, Number) VALUES ('" + name + "', '" + state + "', '" + intensity + "', '" + id_room + "', '"+ number +"');";
+                String InsertQuery = "INSERT INTO Light (Name, State, Intensity, Id_Room, Number) VALUES ('" + this.name + "', '" + this.state + "', '" + this.intensity + "', '" + this._Parent.Id + "', '"+ this.number +"');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
                 //Recuperation de l'id de la light
@@ -57,9 +53,9 @@ namespace OpenWebNetDataContract.Model
                     //Creation de lobjet light
                     if (id != 0)
                     {
-                        Light light = new Light(id, name, state, number, intensity);
+                        this.id = id;
                         Console.WriteLine("New Light Created");
-                        return light;
+                        return this;
                     }
                     else
                     {
@@ -79,14 +75,13 @@ namespace OpenWebNetDataContract.Model
                 error += fail.Message.ToString() + "\n";
                 Console.WriteLine(error);
                 return null;
-            }*/
-            throw new NotImplementedException();
+            }
         }
 
         public Boolean update(Light light){
-            Boolean currentState = true; //this.LightingGetLightStatus();
+            //Boolean currentState = true; //this.LightingGetLightStatus();
 
-            if (currentState != light.state)
+            if (this.state != light.state)
             {
                 try
                 {
