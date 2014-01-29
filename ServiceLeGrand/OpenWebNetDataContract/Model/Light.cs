@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenWebNetDataContract;
 using OpenWebNetDataContract.Gateway;
+using System.Data;
 
 namespace OpenWebNetDataContract.Model
 {
@@ -78,7 +79,8 @@ namespace OpenWebNetDataContract.Model
                 error += fail.Message.ToString() + "\n";
                 Console.WriteLine(error);
                 return null;
-            }
+            }*/
+            throw new NotImplementedException();
         }
 
         public Boolean update(Light light){

@@ -1,4 +1,4 @@
-﻿using ServiceLegrand;
+using ServiceLegrand;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenWebNetDataContract.Model;
-using OpenWebNetDataContract.Gateway;
 
 namespace OpenWebNetWinForm
 {
@@ -38,8 +37,6 @@ namespace OpenWebNetWinForm
         private void button1_Click(object sender, EventArgs e)
         {
 
-
-            
         }
 
         private void buttonTest_Click(object sender, EventArgs e)
@@ -61,7 +58,9 @@ namespace OpenWebNetWinForm
             User user = new User();
             user = user.add("test43", "test42", "mai42l@mail.mail", "password42");
 
-            OpenWebNetDataContract.Model.Program program = new OpenWebNetDataContract.Model.Program();
+            //Test AddHome
+            Home home = new Home();
+            home = home.add(null, "homeName", (float)42.3, (float)150.2);
 
             Console.WriteLine("STOP");
         }
