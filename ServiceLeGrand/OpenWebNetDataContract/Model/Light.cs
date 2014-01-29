@@ -35,16 +35,16 @@ namespace OpenWebNetDataContract.Model
             CAD.SQLite db;
             try
             {
-                //Ajout de l'user en base
+                //Ajout de la light en base
                 db = CAD.SQLite.getInstance();
-                String InsertQuery = "INSERT INTO Light (Name, State, Intensity, Id_Room) VALUES ('" + name + "', '" + state + "', '" + number + "', '" + password + "');";
+                String InsertQuery = "INSERT INTO Light (Name, State, Intensity, Id_Room, Number) VALUES ('" + name + "', '" + state + "', '" + intensity + "', '" + id_room + "', '"+ number +"');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
-                //Recuperation de l'id de l'user (mail doit etre unique)
+                //Recuperation de l'id de la light
                 if (rowsUpdated > 0)
                 {
                     DataTable result;
-                    String selectQuery = "SELECT Id FROM User WHERE Mail = '" + mail + "'";
+                    String selectQuery = "SELECT Id FROM Light";
                     result = db.GetDataTable(selectQuery);
                     int id = 0;
 
@@ -53,28 +53,28 @@ namespace OpenWebNetDataContract.Model
                         id = int.Parse(r["Id"].ToString());
                     }
 
-                    //Creation de lobjet User
+                    //Creation de lobjet light
                     if (id != 0)
                     {
-                        User user = new User(id, name, surname, mail, password);
-                        Console.WriteLine("New User Created");
-                        return user;
+                        Light light = new Light(id, name, state, number, intensity);
+                        Console.WriteLine("New Light Created");
+                        return light;
                     }
                     else
                     {
-                        Console.WriteLine("Erreur creation User");
+                        Console.WriteLine("Erreur creation light");
                         return null;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Erreur creation User");
+                    Console.WriteLine("Erreur creation light");
                     return null;
                 }
             }
             catch (Exception fail)
             {
-                String error = "Erreur creation User - The following error has occurred:\n\n";
+                String error = "Erreur creation light - The following error has occurred:\n\n";
                 error += fail.Message.ToString() + "\n";
                 Console.WriteLine(error);
                 return null;
@@ -128,6 +128,37 @@ namespace OpenWebNetDataContract.Model
                 }
             }
             return true;
+        }
+
+        public Boolean removeLight(Light light)
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                int updatedRow = 0;
+                String query = "DELETE FROM Light WHERE Id = " + light.Id + ";";
+
+                updatedRow = db.ExecuteNonQuery(query);
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("Light deleted");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Light was not deleted");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "Error Light: The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
         }
 
    
