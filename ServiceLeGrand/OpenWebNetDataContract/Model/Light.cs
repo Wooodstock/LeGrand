@@ -6,19 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenWebNetDataContract;
 using OpenWebNetDataContract.Gateway;
-using System.Data;
 
 namespace OpenWebNetDataContract.Model
 {
     [DataContract]
     public class Light : Equipment
     {
-        public Light(int id, String name, Boolean state, int number, int intensity)
+        public Light(int id, String name, Boolean state, int number, int intensity) : base(id, name, state, number)
         {
-            this.id = id;
-            this.name = name;
-            this.state = state;
-            this.number = number;
             this.intensity = intensity;
         }
 
@@ -79,8 +74,7 @@ namespace OpenWebNetDataContract.Model
                 error += fail.Message.ToString() + "\n";
                 Console.WriteLine(error);
                 return null;
-            }*/
-            throw new NotImplementedException();
+            }
         }
 
         public Boolean update(Light light){
