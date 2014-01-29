@@ -17,14 +17,25 @@ namespace OpenWebNetDataContract.Model
 
         }
 
-        public Room(int id, String name, float surface, List<Equipment> equipments, Consumption consumption)
+        public Room(int id, String name, float surface, List<Equipment> equipments, Consumption consumption, Home _parent)
         {
             this.id = id;
             this.name = name;
             this.surface = surface;
             this.equipments = equipments;
             this.consumption = consumption;
+            this._parent = _parent;
         }
+
+        [DataMember]
+        private Home _parent;
+
+        public Home _Parent
+        {
+            get { return _parent; }
+            set { _parent = value; }
+        }
+        
 
         [DataMember]
         private int id;

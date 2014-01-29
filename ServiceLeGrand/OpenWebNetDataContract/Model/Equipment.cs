@@ -16,12 +16,13 @@ namespace OpenWebNetDataContract.Model
         {
         }
 
-        public Equipment(int id, String name, Boolean state, int number)
+        public Equipment(int id, String name, Boolean state, int number, Room _parent)
         {
             this.id = id;
             this.name = name;
             this.state = state;
             this.number = number;
+            this._parent = _parent;
         }
 
         private OpenWebNetGateway openWebNetGateway;
@@ -31,6 +32,16 @@ namespace OpenWebNetDataContract.Model
             get { return openWebNetGateway; }
             set { openWebNetGateway = value; }
         }
+
+        [DataMember]
+        private Room _parent;
+
+        public Room _Parent
+        {
+            get { return _parent; }
+            set { _parent = value; }
+        }
+        
 
         private SQLite sqLite;
 
