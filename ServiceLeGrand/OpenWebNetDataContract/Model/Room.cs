@@ -82,7 +82,13 @@ namespace OpenWebNetDataContract.Model
             set { consumption = value; }
         }
 
-        Room add(String name, float surface, List<Equipment> equipments, Consumption consumption)
+
+        // Ajoute un equipement a la liste de room
+        public void addEquipment(Equipment equipment) {
+            this.equipments.Add(equipment);
+        }
+
+        Room add()
         {
             CAD.SQLite db;
             try

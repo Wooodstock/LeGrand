@@ -70,6 +70,10 @@ namespace OpenWebNetDataContract.Model
             set { volume = value; }
         }
 
+        public void addRoom(Room room) {
+            this.rooms.Add(room);
+        }
+
         public Home add(List<Room> rooms, String name, float surface, float volume)
         {
             CAD.SQLite db;

@@ -49,10 +49,6 @@ namespace OpenWebNetWinForm
 
             ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
 
-            ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
-
- 
-            ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
             */
             //Test AddUser
             User user = new User();
@@ -61,6 +57,34 @@ namespace OpenWebNetWinForm
             //Test AddHome
             Home home = new Home();
             home = home.add(null, "homeName", (float)42.3, (float)150.2);
+
+            Home loicHome = new Home(0, "La Maison de Loic", new List<Room>(), (float)150, (float)1500);
+
+            Room cuisine = new Room(0, "Cuisine", (float)50, new List<Equipment>(), new Consumption(0, "200", "200"), loicHome);
+
+            cuisine.addEquipment(new Light(0, "Light1", false, 1, 50));
+            cuisine.addEquipment(new Light(0, "Light2", false, 2, 50));
+            cuisine.addEquipment(new Light(0, "Light3", false, 3, 50));
+
+            Room salleDeBain = new Room(0, "Salle de Bain", (float)50, new List<Equipment>(), new Consumption(0, "200", "200"), loicHome);
+
+            salleDeBain.addEquipment(new Light(0, "Light1", false, 1, 50));
+            salleDeBain.addEquipment(new Light(0, "Light2", false, 2, 50));
+            salleDeBain.addEquipment(new Light(0, "Light3", false, 3, 50));
+
+            Room salon = new Room(0, "Salon", (float)50, new List<Equipment>(), new Consumption(0, "200", "200"), loicHome);
+
+            salon.addEquipment(new Light(0, "Light1", false, 1, 50));
+            salon.addEquipment(new Light(0, "Light2", false, 2, 50));
+            salon.addEquipment(new Light(0, "Light3", false, 3, 50));
+
+
+
+            loicHome.addRoom(cuisine);
+            loicHome.addRoom(salleDeBain);
+            loicHome.addRoom(salon);
+
+            
 
             Console.WriteLine("STOP");
         }
