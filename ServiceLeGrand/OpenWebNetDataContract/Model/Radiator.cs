@@ -129,6 +129,37 @@ namespace OpenWebNetDataContract.Model
             return true;
         }
 
+        public Boolean update(Radiator radiator)
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                int updatedRow = 0;
+                String query = "DELETE FROM Radiator WHERE Id = " + this.Id + ";";
+
+                updatedRow = db.ExecuteNonQuery(query);
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("Radiator deleted");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Radiator was not deleted");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "Error Radiator: The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
+        }
+
 
 
         public void HeatingSetZoneAuto(string where)
