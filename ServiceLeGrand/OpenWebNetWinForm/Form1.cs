@@ -52,10 +52,12 @@ namespace OpenWebNetWinForm
             light.LightingLightOFF("1");*/
 
             //Test AddUser
-            User user = new User();
-            user = user.add("test42", "test42", "mai42l@mail.mail", "password42");
+            /*User user = new User();
+            user = user.add("test42", "test42", "mai42l@mail.mail", "password42");*/
 
-            OpenWebNetDataContract.Model.Program program = new OpenWebNetDataContract.Model.Program();
+            //Test AddHome
+            Home home = new Home();
+            home = home.add(null, "homeName", (float)42.3, (float)150.2);
 
             Console.WriteLine("STOP");
             //*/

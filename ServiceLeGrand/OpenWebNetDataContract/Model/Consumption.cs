@@ -15,10 +15,20 @@ namespace OpenWebNetDataContract.Model
 
         }
 
-        public Consumption(String electrical, String gaz)
+        public Consumption(int id, String electrical, String gaz)
         {
+            this.id = id;
             this.electrical = electrical;
             this.gaz = gaz;
+        }
+
+        [DataMember]
+        private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
         }
 
         [DataMember]

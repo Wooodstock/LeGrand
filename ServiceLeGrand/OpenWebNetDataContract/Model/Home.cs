@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -69,9 +70,75 @@ namespace OpenWebNetDataContract.Model
             set { volume = value; }
         }
 
-        Home add(List<Room> rooms, String name, float surface, float volume)
+        public Home add(List<Room> rooms, String name, float surface, float volume)
         {
-            throw new NotImplementedException();
+            CAD.SQLite db;
+            try
+            {
+                //Ajout de l'user en base
+                db = CAD.SQLite.getInstance();
+
+
+                String InsertQuery = "INSERT INTO Home (Name, Surface , Volume) VALUES ('" + name + "', '" + surface + "', '" + volume + "');";
+                int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
+
+                //Recuperation de l'id de l'user (mail doit etre unique)
+                if (rowsUpdated > 0)
+                {
+                    DataTable result;
+                    String selectQuery = "SELECT Id FROM Home WHERE name = '" + name + "'";
+                    result = db.GetDataTable(selectQuery);
+                    int id = 0;
+
+                    foreach (DataRow r in result.Rows)
+                    {
+                        id = int.Parse(r["Id"].ToString());
+                    }
+
+
+
+                    //Creation de lobjet Home et link avec Room
+                    if (id != 0)
+                    {
+                        if (rooms != null && rooms.Count > 0)
+                        {
+                            foreach (Room room in rooms)
+                            {
+                                InsertQuery = "INSERT INTO Room (ID_Home) VALUES ('" + id + "') WHERE ID_Room = '" + room.Id + "';";
+                                rowsUpdated = db.ExecuteNonQuery(InsertQuery);
+                                if (rowsUpdated > 0)
+                                {
+                                    Console.WriteLine("Room "+ room.Id + " updated");
+                                }
+                                else {
+                                    Console.WriteLine("Failed to link Room with Home");
+                                }
+                            }
+                        }
+
+                        Home home = new Home(id, name, rooms, surface,volume);
+                        Console.WriteLine("New Home Created");
+                        return home;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Erreur creation Home");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Erreur creation Home");
+                    return null;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "Erreur creation Home - The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return null;
+            }
         }
 
         Boolean remove(Home home)
