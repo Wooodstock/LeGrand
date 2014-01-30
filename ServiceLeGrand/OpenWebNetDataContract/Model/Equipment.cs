@@ -86,60 +86,6 @@ namespace OpenWebNetDataContract.Model
             get { return number; }
             set { number = value; }
         }
-
-        Equipment add(String name, Boolean state, float temperature, int intensity)
-        {
-            throw new NotImplementedException();
-        }
-
-        Boolean remove(Equipment equipment)
-        {
-            throw new NotImplementedException();
-        }
-
-        Equipment update(Equipment equipment)
-        {
-
-            if (equipment is Radiator)
-            {
-                // ########## The DataBase Side ###########
-                // TODO
-
-                // ##########  The Wall Side ###########
-                // TODO
-            }
-            else if (equipment is Light)
-            {
-                // ########## The DataBase Side ###########
-                // TODO
-
-
-
-                // ##########  The Wall Side ###########
-                // TODO
-
-            }
-            else if (equipment is Shutter)
-            {
-                // ########## The DataBase Side ###########
-                // TODO
-
-                // ##########  The Wall Side ###########
-                // TODO
-
-            }
-            else if (equipment is Alarm)
-            {
-                // ########## The DataBase Side ###########
-                // TODO
-
-                // ##########  The Wall Side ###########
-                // TODO
-
-            }
-
-            throw new NotImplementedException();
-        }
         
         
     }

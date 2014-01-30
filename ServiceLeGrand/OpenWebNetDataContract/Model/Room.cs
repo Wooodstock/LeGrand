@@ -88,7 +88,7 @@ namespace OpenWebNetDataContract.Model
             this.equipments.Add(equipment);
         }
 
-        Room add()
+        public Room add()
         {
             CAD.SQLite db;
             try
@@ -96,7 +96,7 @@ namespace OpenWebNetDataContract.Model
                 //Ajout de la room en base
                 db = CAD.SQLite.getInstance();
 
-                String InsertQuery = "INSERT INTO Room (Name, Surface) VALUES ('" + name + "', '" + surface + "');";
+                String InsertQuery = "INSERT INTO Room (Name, Surface, ID_Home) VALUES ('" + this.name + "', '" + this.surface + "', '"+ this._parent.Id +"');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
                 //Recuperation de l'id de la room (mail doit etre unique)
@@ -117,6 +117,7 @@ namespace OpenWebNetDataContract.Model
                     //Creation de lobjet Room et link avec Equipement
                     if (id != 0)
                     {
+                        this.id = id;
                         if (equipments != null && equipments.Count > 0)
                         {
                             foreach (Equipment equipment in equipments)
@@ -124,44 +125,17 @@ namespace OpenWebNetDataContract.Model
                                 if (equipment is Radiator)
                                 {
                                     Radiator radiator = (Radiator)equipment;
-                                    InsertQuery = "INSERT INTO Radiator (ID_Room) VALUES ('" + id + "') WHERE ID = '" + radiator.Id + "';";
-                                    rowsUpdated = db.ExecuteNonQuery(InsertQuery);
-                                    if (rowsUpdated > 0)
-                                    {
-                                        Console.WriteLine("Radiator " + radiator.Id + " updated");
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Failed to link Radiator with Room");
-                                    }
+                                    radiator.add();
                                 }
                                 else if (equipment is Light)
                                 {
                                     Light light = (Light)equipment;
-                                    InsertQuery = "INSERT INTO Light (ID_Room) VALUES ('" + id + "') WHERE ID = '" + light.Id + "';";
-                                    rowsUpdated = db.ExecuteNonQuery(InsertQuery);
-                                    if (rowsUpdated > 0)
-                                    {
-                                        Console.WriteLine("Light " + light.Id + " updated");
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Failed to link Light with Room");
-                                    }
+                                    light.add();
                                 }
                                 else if (equipment is Shutter)
                                 {
                                     Shutter shutter = (Shutter)equipment;
-                                    InsertQuery = "INSERT INTO Shutter (ID_Room) VALUES ('" + id + "') WHERE ID = '" + shutter.Id + "';";
-                                    rowsUpdated = db.ExecuteNonQuery(InsertQuery);
-                                    if (rowsUpdated > 0)
-                                    {
-                                        Console.WriteLine("Shutter " + shutter.Id + " updated");
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Failed to link Shutter with Room");
-                                    }
+                                    shutter.add();
                                 }
                                 else if (equipment is Alarm)
                                 {

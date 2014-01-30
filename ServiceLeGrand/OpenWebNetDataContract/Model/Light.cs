@@ -34,14 +34,14 @@ namespace OpenWebNetDataContract.Model
             {
                 //Ajout de la light en base
                 db = CAD.SQLite.getInstance();
-                String InsertQuery = "INSERT INTO Light (Name, State, Intensity, Id_Room, Number) VALUES ('" + this.name + "', '" + this.state + "', '" + this.intensity + "', '" + this._Parent.Id + "', '"+ this.number +"');";
+                String InsertQuery = "INSERT INTO Light (Name, State, Intensity, ID_Room, Number) VALUES ('" + this.name + "', '" + this.state + "', '" + this.intensity + "', '" + this._Parent.Id + "', '"+ this.number +"');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
                 //Recuperation de l'id de la light
                 if (rowsUpdated > 0)
                 {
                     DataTable result;
-                    String selectQuery = "SELECT Id FROM Light";
+                    String selectQuery = "SELECT ID FROM Light";
                     result = db.GetDataTable(selectQuery);
                     int id = 0;
 

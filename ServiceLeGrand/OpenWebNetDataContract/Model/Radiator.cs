@@ -33,7 +33,7 @@ namespace OpenWebNetDataContract.Model
             {
                 //Ajout du radiateur en base
                 db = CAD.SQLite.getInstance();
-                String InsertQuery = "INSERT INTO Radiator (Name, State, Temperature, Id_Room, Number) VALUES ('" + this.name + "', '" + this.state + "', '" + this.temperature + "', '" + this._Parent.Id + "', '" + this.number + "');";
+                String InsertQuery = "INSERT INTO Radiator (Name, State, Temperature, ID_Room, Number) VALUES ('" + this.name + "', '" + this.state + "', '" + this.temperature + "', '" + this._Parent.Id + "', '" + this.number + "');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
                 //Recuperation de l'id du radiator

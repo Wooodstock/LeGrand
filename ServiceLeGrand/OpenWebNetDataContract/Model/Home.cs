@@ -16,6 +16,7 @@ namespace OpenWebNetDataContract.Model
 
         }
 
+
         public Home(int id, String name, List<Room> rooms, float surface, float volume)
         {
             this.id = id;
@@ -79,7 +80,6 @@ namespace OpenWebNetDataContract.Model
             CAD.SQLite db;
             try
             {
-                //Ajout de l'user en base
                 db = CAD.SQLite.getInstance();
 
 
@@ -104,19 +104,12 @@ namespace OpenWebNetDataContract.Model
                     //Creation de lobjet Home et link avec Room
                     if (id != 0)
                     {
+                        this.id = id;
                         if (rooms != null && rooms.Count > 0)
                         {
                             foreach (Room room in rooms)
                             {
-                                InsertQuery = "INSERT INTO Room (ID_Home) VALUES ('" + id + "') WHERE ID_Room = '" + room.Id + "';";
-                                rowsUpdated = db.ExecuteNonQuery(InsertQuery);
-                                if (rowsUpdated > 0)
-                                {
-                                    Console.WriteLine("Room "+ room.Id + " updated");
-                                }
-                                else {
-                                    Console.WriteLine("Failed to link Room with Home");
-                                }
+                                room.add();
                             }
                         }
 
