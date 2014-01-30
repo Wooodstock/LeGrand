@@ -1,0 +1,34 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Legrand.Views.AddProgramPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid Background="Transparent">
+
+        <TextBlock Margin="10,30,10,0" TextWrapping="Wrap" Text="Ajouter un nouveau programme" FontSize="24" VerticalAlignment="Top" Height="55" HorizontalAlignment="Center" Width="460" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,120,0,0" TextWrapping="Wrap" Text="Nom du programme" FontSize="20" VerticalAlignment="Top" Width="440" Height="60"/>
+        <TextBox HorizontalAlignment="Left" Height="72" Margin="10,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,220,0,0" TextWrapping="Wrap" Text="Heure de début" FontSize="20" VerticalAlignment="Top" Width="207" Height="60"/>
+        <TextBox HorizontalAlignment="Left" Height="72" Margin="10,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230"/>
+        <TextBlock HorizontalAlignment="Left" Margin="260,220,0,0" TextWrapping="Wrap" Text="Heure de fin" FontSize="20" VerticalAlignment="Top" Width="202" Height="60"/>
+        <TextBox HorizontalAlignment="Left" Height="72" Margin="245,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,420,0,0" TextWrapping="Wrap" Text="Nom du programme" FontSize="20" VerticalAlignment="Top" Width="440" Height="60"/>
+        <TextBox HorizontalAlignment="Left" Height="72" Margin="10,442,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,520,0,0" TextWrapping="Wrap" Text="Nom du programme" FontSize="20" VerticalAlignment="Top" Width="440" Height="60"/>
+        <TextBox HorizontalAlignment="Left" Height="72" Margin="10,542,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460"/>
+        <Button Content="Enregistrer" Margin="10,642,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Height="72" Tap="SaveProgramButton" />
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="245,642,0,0" VerticalAlignment="Top" Width="225" Click="Reset" />
+
+    </Grid>
+
+</phone:PhoneApplicationPage>

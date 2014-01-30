@@ -1,0 +1,26 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IServiceLegrand" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+            <customBinding>
+                <binding name="MetadataExchangeHttpBinding_IServiceLegrand">
+                    <textMessageEncoding messageVersion="Default" writeEncoding="utf-8" />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+            </customBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://172.16.254.199:8019/OpenWebNet" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IServiceLegrand" contract="ServiceLegrand.IServiceLegrand"
+                name="BasicHttpBinding_IServiceLegrand" />
+            <endpoint address="http://172.16.254.199:8020/OpenWebNetMex"
+                binding="customBinding" bindingConfiguration="MetadataExchangeHttpBinding_IServiceLegrand"
+                contract="ServiceLegrand.IServiceLegrand" name="MetadataExchangeHttpBinding_IServiceLegrand" />
+        </client>
+    </system.serviceModel>
+</configuration>

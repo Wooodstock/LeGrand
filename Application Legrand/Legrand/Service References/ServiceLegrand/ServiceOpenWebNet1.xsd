@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OpenWebNetDataContract.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OpenWebNetDataContract.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Home">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rooms" nillable="true" type="tns:ArrayOfRoom" />
+      <xs:element minOccurs="0" name="surface" type="xs:float" />
+      <xs:element minOccurs="0" name="volume" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Home" nillable="true" type="tns:Home" />
+  <xs:complexType name="ArrayOfRoom">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Room" nillable="true" type="tns:Room" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoom" nillable="true" type="tns:ArrayOfRoom" />
+  <xs:complexType name="Room">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_parent" nillable="true" type="tns:Home" />
+      <xs:element minOccurs="0" name="consumption" nillable="true" type="tns:Consumption" />
+      <xs:element minOccurs="0" name="equipments" nillable="true" type="tns:ArrayOfEquipment" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="surface" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Room" nillable="true" type="tns:Room" />
+  <xs:complexType name="Consumption">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="electrical" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="gaz" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Consumption" nillable="true" type="tns:Consumption" />
+  <xs:complexType name="ArrayOfEquipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Equipment" nillable="true" type="tns:Equipment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEquipment" nillable="true" type="tns:ArrayOfEquipment" />
+  <xs:complexType name="Equipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_parent" nillable="true" type="tns:Room" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="number" type="xs:int" />
+      <xs:element minOccurs="0" name="state" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Equipment" nillable="true" type="tns:Equipment" />
+</xs:schema>
