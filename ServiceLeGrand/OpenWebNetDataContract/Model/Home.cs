@@ -109,7 +109,7 @@ namespace OpenWebNetDataContract.Model
                         {
                             foreach (Room room in rooms)
                             {
-                                room.add();
+                                room.add(this.id);
                             }
                         }
 

@@ -13,7 +13,9 @@ namespace OpenWebNetDataContract.Model
     [DataContract]
     public class Light : Equipment
     {
-        public Light(int id, String name, Boolean state, int number, int intensity, Room parent) : base(id, name, state, number, parent)
+        Boolean haveRespond = false;
+
+        public Light(int id, String name, Boolean state, int number, int intensity) : base(id, name, state, number)
         {
             this.intensity = intensity;
         }
@@ -27,14 +29,14 @@ namespace OpenWebNetDataContract.Model
             set { intensity = value; }
         }
 
-        public Light add()
+        public Light add(int id_parent)
         {
             CAD.SQLite db;
             try
             {
                 //Ajout de la light en base
                 db = CAD.SQLite.getInstance();
-                String InsertQuery = "INSERT INTO Light (Name, State, Intensity, ID_Room, Number) VALUES ('" + this.name + "', '" + this.state + "', '" + this.intensity + "', '" + this._Parent.Id + "', '"+ this.number +"');";
+                String InsertQuery = "INSERT INTO Light (Name, State, Intensity, ID_Room, Number) VALUES ('" + this.name + "', '" + this.state + "', '" + this.intensity + "', '" + id_parent + "', '" + this.number + "');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
                 //Recuperation de l'id de la light
@@ -78,9 +80,32 @@ namespace OpenWebNetDataContract.Model
             }
         }
 
-        public Boolean update(Light light){
-            //Boolean currentState = true; //this.LightingGetLightStatus();
+        public void callback(object sender, OpenWebNetDataEventArgs e)
+        {
+            this.haveRespond = true;
+            Console.WriteLine("I'm back");
+        }
 
+        public void callbackError(object sender, OpenWebNetDataEventArgs e)
+        {
+            this.haveRespond = true;
+            Console.WriteLine("I'm back");
+        }
+
+        public Boolean update(Light light){
+            /*this.haveRespond = false;
+            this.OpenWebNetGateway.DataReceived += new EventHandler<OpenWebNetDataEventArgs>(callback);
+            this.OpenWebNetGateway.ConnectionError += new EventHandler<OpenWebNetDataEventArgs>(callbackError);
+            
+            this.LightingGetLightStatus(light.number.ToString());
+           
+            while (!this.haveRespond || )
+            {
+                Console.WriteLine("I'm waiting");
+            }
+
+            this.OpenWebNetGateway.DataReceived -= new EventHandler<OpenWebNetDataEventArgs>(callback);
+            */
             if (this.state != light.state)
             {
                 try
@@ -163,7 +188,7 @@ namespace OpenWebNetDataContract.Model
         /// Turn ON the specified light point
         /// </summary>
         /// <param name="where">Specify the light point to turn ON</param>
-        private void LightingLightON(string where)
+        public void LightingLightON(string where)
         {
             OpenWebNetGateway.SendCommand(WHO.Lighting, "1", where);
         }
@@ -172,7 +197,7 @@ namespace OpenWebNetDataContract.Model
         /// Turn OFF the light point specified
         /// </summary>
         /// <param name="where">Specify the light point to turn ON</param>
-        private void LightingLightOFF(string where)
+        public void LightingLightOFF(string where)
         {
             OpenWebNetGateway.SendCommand(WHO.Lighting, "0", where);
         }
@@ -181,7 +206,7 @@ namespace OpenWebNetDataContract.Model
         /// get the light point status
         /// </summary>
         /// <param name="dove">specify the light point</param>
-        private void LightingGetLightStatus(string where)
+        public void LightingGetLightStatus(string where)
         {
             OpenWebNetGateway.GetStateCommand(WHO.Lighting, where);
         }

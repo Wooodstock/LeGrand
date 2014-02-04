@@ -10,19 +10,22 @@ using OpenWebNetDataContract.CAD;
 namespace OpenWebNetDataContract.Model
 {
     [DataContract]
+    [KnownType(typeof(Alarm))]
+    [KnownType(typeof(Light))]
+    [KnownType(typeof(Shutter))]
+    [KnownType(typeof(Radiator))]
     public abstract class Equipment
     {
         public Equipment()
         {
         }
 
-        public Equipment(int id, String name, Boolean state, int number, Room _parent)
+        public Equipment(int id, String name, Boolean state, int number)
         {
             this.id = id;
             this.name = name;
             this.state = state;
             this.number = number;
-            this._parent = _parent;
         }
 
         private OpenWebNetGateway openWebNetGateway;
@@ -31,15 +34,6 @@ namespace OpenWebNetDataContract.Model
         {
             get { return openWebNetGateway; }
             set { openWebNetGateway = value; }
-        }
-
-        [DataMember]
-        private Room _parent;
-
-        public Room _Parent
-        {
-            get { return _parent; }
-            set { _parent = value; }
         }
         
 

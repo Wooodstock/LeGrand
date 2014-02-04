@@ -20,13 +20,14 @@ namespace OpenWebNetDataContract.Model
             this.number = number;
         }
 
-        public Shutter add() {
+        public Shutter add(int id_parent)
+        {
             CAD.SQLite db;
             try
             {
                 //Ajout du radiateur en base
                 db = CAD.SQLite.getInstance();
-                String InsertQuery = "INSERT INTO Shutter (Name, State, ID_Room, number) VALUES ('" + this.name + "', '" + this.state + "', '" + this._Parent.Id + "', '" + this.number + "');";
+                String InsertQuery = "INSERT INTO Shutter (Name, State, ID_Room, number) VALUES ('" + this.name + "', '" + this.state + "', '" + id_parent + "', '" + this.number + "');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
                 //Recuperation de l'id du radiator

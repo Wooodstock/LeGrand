@@ -12,7 +12,7 @@ namespace OpenWebNetDataContract.Model
     [DataContract]
     public class Radiator : Equipment
     {
-        public Radiator(int id, String name, Boolean state, int number, float temperature, Room parent) : base(id, name, state, number, parent)
+        public Radiator(int id, String name, Boolean state, int number, float temperature) : base(id, name, state, number)
         {
             this.temperature = temperature;
         }
@@ -26,14 +26,14 @@ namespace OpenWebNetDataContract.Model
             set { temperature = value; }
         }
 
-        public Radiator add()
+        public Radiator add(int id_parent)
         {
             CAD.SQLite db;
             try
             {
                 //Ajout du radiateur en base
                 db = CAD.SQLite.getInstance();
-                String InsertQuery = "INSERT INTO Radiator (Name, State, Temperature, ID_Room, Number) VALUES ('" + this.name + "', '" + this.state + "', '" + this.temperature + "', '" + this._Parent.Id + "', '" + this.number + "');";
+                String InsertQuery = "INSERT INTO Radiator (Name, State, Temperature, ID_Room, Number) VALUES ('" + this.name + "', '" + this.state + "', '" + this.temperature + "', '" + id_parent + "', '" + this.number + "');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
                 //Recuperation de l'id du radiator
@@ -129,7 +129,7 @@ namespace OpenWebNetDataContract.Model
             return true;
         }
 
-        public Boolean update(Radiator radiator)
+        public Boolean delete(Radiator radiator)
         {
             CAD.SQLite db;
 

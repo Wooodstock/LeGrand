@@ -12,6 +12,10 @@ namespace InterfaceServiceLegrand
     public interface IServiceLegrand
     {
         [OperationContract]
+        [ServiceKnownType(typeof(Light))]
+        [ServiceKnownType(typeof(Alarm))]
+        [ServiceKnownType(typeof(Shutter))]
+        [ServiceKnownType(typeof(Radiator))]
         Home serviceHome(string order, Home home, Dictionary<object, object> dico);
 
         [OperationContract]

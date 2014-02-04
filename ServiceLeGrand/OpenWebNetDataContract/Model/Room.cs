@@ -17,23 +17,13 @@ namespace OpenWebNetDataContract.Model
 
         }
 
-        public Room(int id, String name, float surface, List<Equipment> equipments, Consumption consumption, Home _parent)
+        public Room(int id, String name, float surface, List<Equipment> equipments, Consumption consumption)
         {
             this.id = id;
             this.name = name;
             this.surface = surface;
             this.equipments = equipments;
             this.consumption = consumption;
-            this._parent = _parent;
-        }
-
-        [DataMember]
-        private Home _parent;
-
-        public Home _Parent
-        {
-            get { return _parent; }
-            set { _parent = value; }
         }
         
 
@@ -88,7 +78,7 @@ namespace OpenWebNetDataContract.Model
             this.equipments.Add(equipment);
         }
 
-        public Room add()
+        public Room add(int id_parent)
         {
             CAD.SQLite db;
             try
@@ -96,7 +86,7 @@ namespace OpenWebNetDataContract.Model
                 //Ajout de la room en base
                 db = CAD.SQLite.getInstance();
 
-                String InsertQuery = "INSERT INTO Room (Name, Surface, ID_Home) VALUES ('" + this.name + "', '" + this.surface + "', '"+ this._parent.Id +"');";
+                String InsertQuery = "INSERT INTO Room (Name, Surface, ID_Home) VALUES ('" + this.name + "', '" + this.surface + "', '" + id_parent + "');";
                 int rowsUpdated = db.ExecuteNonQuery(InsertQuery);
 
                 //Recuperation de l'id de la room (mail doit etre unique)
@@ -125,17 +115,17 @@ namespace OpenWebNetDataContract.Model
                                 if (equipment is Radiator)
                                 {
                                     Radiator radiator = (Radiator)equipment;
-                                    radiator.add();
+                                    radiator.add(this.id);
                                 }
                                 else if (equipment is Light)
                                 {
                                     Light light = (Light)equipment;
-                                    light.add();
+                                    light.add(this.id);
                                 }
                                 else if (equipment is Shutter)
                                 {
                                     Shutter shutter = (Shutter)equipment;
-                                    shutter.add();
+                                    shutter.add(this.id);
                                 }
                                 else if (equipment is Alarm)
                                 {

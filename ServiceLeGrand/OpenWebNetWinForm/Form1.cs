@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenWebNetDataContract.Model;
+using OpenWebNetDataContract.Gateway;
 
 namespace OpenWebNetWinForm
 {
@@ -39,13 +40,20 @@ namespace OpenWebNetWinForm
 
         }
 
+        private void gateway_MessageReceived(object sender, OpenWebNetDataEventArgs e) {
+            Console.WriteLine(e.Data);
+        }
+
+
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            /*
+            OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command).MessageReceived += new EventHandler<OpenWebNetDataEventArgs>(gateway_MessageReceived);
             Light light = new Light(0, "Light_Salon", false, 1, 50);
-            light.OpenWebNetGateway = new OpenWebNetGateway("172.16.0.209", 20000, OpenSocketType.Command);
+            light.OpenWebNetGateway = OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command);
             light.OpenWebNetGateway.Connect();
-            light.LightingLightOFF("1");
+            light.LightingLightON("12");
+            light.LightingGetLightStatus("12");
+            
 
             ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
 
@@ -58,7 +66,7 @@ namespace OpenWebNetWinForm
             Home home = new Home();
             home = home.add(null, "homeName", (float)42.3, (float)150.2);
 
-            */
+            
             //Création Home
             
             Home loicHome = new Home(0, "La Maison de Loic", new List<Room>(), (float)150, (float)1500);
