@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://172.20.10.12:8030/ServiceOpenWebNet?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/OpenWebNetDataContract.Model" />
+  <xs:import schemaLocation="http://172.20.10.12:8030/ServiceOpenWebNet?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="serviceHome">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="order" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OpenWebNetDataContract.Model" minOccurs="0" name="home" nillable="true" type="q1:Home" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="dico" nillable="true" type="q2:ArrayOfKeyValueOfanyTypeanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="serviceHomeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OpenWebNetDataContract.Model" minOccurs="0" name="serviceHomeResult" nillable="true" type="q3:Home" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="serviceEquipment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="order" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OpenWebNetDataContract.Model" minOccurs="0" name="home" nillable="true" type="q4:Home" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="dico" nillable="true" type="q5:ArrayOfKeyValueOfanyTypeanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="serviceEquipmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/OpenWebNetDataContract.Model" minOccurs="0" name="serviceEquipmentResult" nillable="true" type="q6:Equipment" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMot">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMotResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getMotResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

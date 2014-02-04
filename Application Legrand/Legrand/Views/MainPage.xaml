@@ -1,0 +1,103 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Legrand.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:Panorama Margin="0,0">
+
+        <phone:PanoramaItem Header="Ma maison">
+            <Grid Background="Transparent">
+                <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="/Assets/Maison.png"/>
+                <TextBlock HorizontalAlignment="Left" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="325">
+						<Run FontWeight="Bold" FontSize="23" Text="GESTION DE VOTRE MAISON"/>
+						<LineBreak/>
+						<Run FontSize="24" Text="Tout gérer au même endroit"/>
+                </TextBlock>
+                <ListBox Name="ListRooms" Margin="0,100,0,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" BorderBrush="Gray" BorderThickness="1" Click="AccessRoom">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal" Height="70" Width="400">
+                                        <TextBlock Width="400" FontSize="24" TextAlignment="Center" Text="{Binding name}" Height="80" Margin="-12,14"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <TextBlock x:Name="coucou" TextWrapping="Wrap"/>
+                </ListBox>
+            </Grid>
+        </phone:PanoramaItem>
+
+        <phone:PanoramaItem Header="Programmes">
+            <Grid Background="Transparent">
+                <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="/Assets/Programme.png"/>
+                <TextBlock HorizontalAlignment="Left" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="325">
+						<Run FontSize="23" Text="GESTION DES PROGRAMMES" FontWeight="Bold"/>
+						<LineBreak/>
+						<Run FontSize="24" Text="Automatisez votre maison"/>
+                </TextBlock>
+                <Button HorizontalAlignment="Left" Margin="-12,80,0,0" VerticalAlignment="Top" BorderBrush="Gray" BorderThickness="0" Tap="AddProgramButton">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" Height="70" Width="400">
+                            <Image Source="/Assets/Programme.png" Width="70" Height="70" />
+                            <StackPanel Orientation="Vertical" Height="70">
+                                <StackPanel Orientation="Horizontal" Height="80">
+                                    <TextBlock Width="300" FontSize="24" TextAlignment="Center" Text="Ajouter un programme" Height="70" Margin="0,14"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <ListBox Name="Programs" Margin="0,200,0,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" BorderBrush="Gray" BorderThickness="1" Tap="AccessProgram">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal" Height="70" Width="400">
+                                        <TextBlock x:Name="ListProgram" Width="400" FontSize="24" TextAlignment="Center" Text="{Binding Title}" Height="80" Margin="-12,14"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </phone:PanoramaItem>
+
+        <phone:PanoramaItem Header="Alarme">
+            <Grid Background="Transparent">
+                <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="/Assets/Alarme.png"/>
+                <TextBlock HorizontalAlignment="Left" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="325">
+						    <Run FontSize="24" Text="GESTION DE L'ALARME" FontWeight="Bold"/>
+						    <LineBreak/>
+						    <Run FontSize="24" Text="Activez ou désactivez l'alarme"/>
+                </TextBlock>
+            </Grid>
+        </phone:PanoramaItem>
+
+        <phone:PanoramaItem Header="Notifications">
+            <Grid Background="Transparent">
+                <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="/Assets/Notifications.png"/>
+                <TextBlock HorizontalAlignment="Left" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="325">
+						<Run FontSize="24" Text="CENTRE DE NOTIFICATIONS" FontWeight="Bold"/>
+						<LineBreak/>
+						<Run FontSize="24" Text="Activez ou désactivez les notifications"/>
+                </TextBlock>
+            </Grid>
+        </phone:PanoramaItem>
+
+    </phone:Panorama>
+
+</phone:PhoneApplicationPage>
