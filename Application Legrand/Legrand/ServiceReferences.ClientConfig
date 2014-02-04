@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IServiceLegrand" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://172.20.10.12:8019/OpenWebNet" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IServiceLegrand" contract="ServiceLegrand.IServiceLegrand"
+                name="BasicHttpBinding_IServiceLegrand" />
+        </client>
+    </system.serviceModel>
+</configuration>

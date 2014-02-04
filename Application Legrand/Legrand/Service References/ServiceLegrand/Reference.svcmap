@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="637f9205-2da0-4d50-a9ca-0c398ceda389" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://172.20.10.12:8030/ServiceOpenWebNet?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceOpenWebNet.xsd" MetadataType="Schema" ID="efa8e5f8-5bfb-4255-b9fc-53503e200ad0" SourceId="1" SourceUrl="http://172.20.10.12:8030/ServiceOpenWebNet?xsd=xsd1" />
+    <MetadataFile FileName="ServiceOpenWebNet1.xsd" MetadataType="Schema" ID="d744c695-5e7c-4cea-854f-490ccee7613f" SourceId="1" SourceUrl="http://172.20.10.12:8030/ServiceOpenWebNet?xsd=xsd2" />
+    <MetadataFile FileName="ServiceOpenWebNet2.xsd" MetadataType="Schema" ID="46cba34a-3b24-47a0-8d05-c1c8f471921e" SourceId="1" SourceUrl="http://172.20.10.12:8030/ServiceOpenWebNet?xsd=xsd3" />
+    <MetadataFile FileName="ServiceLegrand.wsdl" MetadataType="Wsdl" ID="86ce39a8-3f1d-479d-a2e8-988cfc452896" SourceId="1" SourceUrl="http://172.20.10.12:8030/ServiceOpenWebNet?wsdl" />
+    <MetadataFile FileName="ServiceOpenWebNet3.xsd" MetadataType="Schema" ID="76947049-2bbd-4451-a39d-728c18c0ba53" SourceId="1" SourceUrl="http://172.20.10.12:8030/ServiceOpenWebNet?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
