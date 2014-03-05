@@ -17,6 +17,8 @@ namespace OpenWebNetWinForm
     public partial class Form1 : Form
     {
         private ServiceHost host;
+        private List<User> Users;
+        private User updatedUser;
 
         public Form1()
         {
@@ -33,6 +35,15 @@ namespace OpenWebNetWinForm
         {
             host = new ServiceHost(typeof(ServiceLegrand.ServiceLegrand));
             host.Open();
+
+            Users = new List<User>();
+            Users = User.retrieveAllUser();
+
+            foreach (User user in Users)
+            {
+                cbUsers.Items.Add(user.Name);
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,13 +62,11 @@ namespace OpenWebNetWinForm
             Light light = new Light(0, "Light_Salon", false, 1, 50);
             light.OpenWebNetGateway = OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command);
             light.OpenWebNetGateway.Connect();
-            light.LightingLightOFF("12");
+            light.LightingLightON("12");
             light.LightingGetLightStatus("12");
             
-
             ServiceLegrand.ServiceLegrand o = new ServiceLegrand.ServiceLegrand();
 
-            
             //Test AddUser
             User user = new User();
             user = user.add("test43", "test42", "mai42l@mail.mail", "password42");
@@ -65,11 +74,10 @@ namespace OpenWebNetWinForm
             //Test AddHome
             Home home = new Home();
             home = home.add(null, "homeName", (float)42.3, (float)150.2);
-
             
             //Création Home
-            
             Home loicHome = new Home(0, "La Maison de Loic", new List<Room>(), (float)150, (float)1500);
+
             /*
             Room cuisine = new Room(0, "Cuisine", (float)50, new List<Equipment>(), new Consumption(0, "200", "200"), loicHome);
 
@@ -100,12 +108,30 @@ namespace OpenWebNetWinForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            User Client = new User();
+            Client = Client.add(tbaddPrenom.Text, tbaddNom.Text, tbupdateEmail.Text, tbupdateMdp.Text);
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void btnupdateUser_Click(object sender, EventArgs e)
+        {
+            updatedUser.update();
+        }
+
+        private void cbUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                       // get the selected text, you can also use SelectedIndex and SelectedValue
+            int selectedIndex = cbUsers.SelectedIndex;
+
+            updatedUser = Users.ElementAt(selectedIndex);
+            tbupdatePrenom.Text = updatedUser.Name;
+            tbupdateNom.Text = updatedUser.Surname;
+            tbupdateEmail.Text = updatedUser.Mail;
+            tbupdateMdp.Text = updatedUser.Password;
         }
     }
 }
