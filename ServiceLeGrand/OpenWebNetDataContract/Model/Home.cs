@@ -71,7 +71,8 @@ namespace OpenWebNetDataContract.Model
             set { volume = value; }
         }
 
-        public void addRoom(Room room) {
+        public void addRoom(Room room)
+        {
             this.rooms.Add(room);
         }
 
@@ -113,7 +114,7 @@ namespace OpenWebNetDataContract.Model
                             }
                         }
 
-                        Home home = new Home(id, name, rooms, surface,volume);
+                        Home home = new Home(id, name, rooms, surface, volume);
                         Console.WriteLine("New Home Created");
                         return home;
                     }
@@ -150,12 +151,47 @@ namespace OpenWebNetDataContract.Model
             throw new NotImplementedException();
         }
 
-        public void retrieveByUserId(int idUser) { 
-            // Select * from home where Id_user = idUser
-            // getIdhome
-            // 
+        public void retrieveByUserId(int idUser)
+        {
+            CAD.SQLite db;
+            try
+            {
+                db = CAD.SQLite.getInstance();
 
+                DataTable result;
+                String selectQuery = "SELECT * FROM Home WHERE  ID = (SELECT ID_Home FROM User Where Id = 1 LIMIT 1)";
+                result = db.GetDataTable(selectQuery);
+                Home home = new Home();
+
+                foreach (DataRow r in result.Rows)
+                {
+                    home.id = int.Parse(r["Id"].ToString());
+                    home.name = r["Name"].ToString();
+                    home.surface = float.Parse(r["Surface"].ToString());
+                    home.volume = float.Parse(r["Volume"].ToString());
+                }
+
+                //get all room id
+                selectQuery = "SELECT Id FROM Rooms WHERE ID_Home = " + home.id + "";
+                result = db.GetDataTable(selectQuery);
+                List<Room> rooms = new List<Room>();
+
+                foreach (DataRow r in result.Rows)
+                {
+                    Room room = new Room();
+                    //room.retrieveById(int.Parse(r["Id"].ToString()));
+                    rooms.Add(room);
+                }
+
+                this.rooms = rooms;
+            }
+            catch (Exception fail)
+            {
+                String error = "Erreur retreive Home - The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+            }
         }
-        
+
     }
 }
