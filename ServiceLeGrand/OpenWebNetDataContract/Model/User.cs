@@ -229,6 +229,35 @@ namespace OpenWebNetDataContract.Model
             return -1;
         }
 
+        static List<User> retrieveAllUser()
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                DataTable result;
+                String query = "SELECT * FROM User";
+                result = db.GetDataTable(query);
+                List<User> users = new List<User>();
+                // boucle resultat reauete
+                foreach (DataRow r in result.Rows)
+                {
+                    User user = new User();
+                    user.name = r["Name"].ToString();
+                    users.Add(user);
+                }
+                return users;
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return null;
+            }
+        }
+
         public Boolean logout()
         {
             return true;
