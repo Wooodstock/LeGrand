@@ -20,6 +20,11 @@ namespace OpenWebNetDataContract.Model
             this.number = number;
         }
 
+        public Shutter()
+        {
+            // TODO: Complete member initialization
+        }
+
         public Boolean update() { 
             /*
              * Mettre à jour en fonction de state : 1 ouvert, 0 fermé

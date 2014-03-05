@@ -179,7 +179,7 @@ namespace OpenWebNetDataContract.Model
                 foreach (DataRow r in result.Rows)
                 {
                     Room room = new Room();
-                    //room.retrieveById(int.Parse(r["Id"].ToString()));
+                    room.retrieveById(int.Parse(r["Id"].ToString()));
                     rooms.Add(room);
                 }
 
