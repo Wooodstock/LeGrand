@@ -209,6 +209,32 @@ namespace OpenWebNetDataContract.Model
                     this.name = r["Name"].ToString();
                     this.surface = float.Parse(r["Surface"].ToString());
                 }
+
+                //Retrieve All Equipement
+                List<Equipment> equipments = new List<Equipment>();
+                //get all LIGHT
+                query = "SELECT * FROM Light WHERE ID_Room = "+ this.id +"";
+                result = db.GetDataTable(query);
+                
+                foreach (DataRow r in result.Rows)
+                {
+                    Equipment equipment = new Light();
+                    //equipment.retrieveById(int.Parse(r["Surface"].ToString()));
+                    equipments.Add(equipment);
+                }
+
+                //get all Shutter
+                query = "SELECT * FROM Shutter WHERE ID_Room = " + this.id + "";
+                result = db.GetDataTable(query);
+
+                foreach (DataRow r in result.Rows)
+                {
+                    Equipment equipment = new Shutter();
+                    //equipment.retrieveById(int.Parse(r["Surface"].ToString()));
+                    equipments.Add(equipment);
+                } 
+ 
+                this.equipments = equipments;
             }
             catch (Exception fail)
             {

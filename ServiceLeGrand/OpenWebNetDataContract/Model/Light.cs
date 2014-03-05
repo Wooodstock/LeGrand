@@ -21,6 +21,11 @@ namespace OpenWebNetDataContract.Model
             this.intensity = intensity;
         }
 
+        public Light()
+        {
+            // TODO: Complete member initialization
+        }
+
         private int intensity;
 
         [DataMember]
