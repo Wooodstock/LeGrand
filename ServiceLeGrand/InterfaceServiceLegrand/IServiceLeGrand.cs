@@ -19,10 +19,7 @@ namespace InterfaceServiceLegrand
         Home serviceHome(string order, Home home, Dictionary<object, object> dico);
 
         [OperationContract]
-        Equipment serviceEquipment(string order, Home home, Dictionary<object, object> dico);
-
-        [OperationContract]
-        string getMot();
+        Equipment serviceEquipment(string order, Equipment equipment, Dictionary<object, object> dico);
 
     }
 }

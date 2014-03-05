@@ -14,6 +14,7 @@ namespace OpenWebNetDataContract.Model
     public class Light : Equipment
     {
         Boolean haveRespond = false;
+        String response;
 
         public Light(int id, String name, Boolean state, int number, int intensity) : base(id, name, state, number)
         {
@@ -83,29 +84,71 @@ namespace OpenWebNetDataContract.Model
         public void callback(object sender, OpenWebNetDataEventArgs e)
         {
             this.haveRespond = true;
+            this.response = e.Data;
             Console.WriteLine("I'm back");
         }
 
-        public void callbackError(object sender, OpenWebNetDataEventArgs e)
+        public void callbackError(object sender, OpenWebNetErrorEventArgs e)
         {
             this.haveRespond = true;
-            Console.WriteLine("I'm back");
+            Console.WriteLine("Error during Wall connection : "+ e.Exception.Message);
+        }
+
+        public Boolean update() {
+
+            this.OpenWebNetGateway = OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command);
+
+
+            if (this.state)
+            {
+                this.LightingLightON(this.number.ToString());
+            }
+            else {
+                this.LightingLightOFF(this.number.ToString());
+            }
+
+            //Mise a jour de la BDD
+            CAD.SQLite db;
+
+            db = CAD.SQLite.getInstance();
+            int updatedRow = 0;
+            String query = "UPDATE Light SET Name=" + this.Name + ", State=" + this.state + ", Intensity =" + this.intensity + " WHERE Id=" + this.Id + ";";
+
+            updatedRow = db.ExecuteNonQuery(query);
+
+            if (updatedRow > 0)
+            {
+                Console.WriteLine("Light updated");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("error: Light not updated");
+                return false;
+            }
+
         }
 
         public Boolean update(Light light){
-            /*this.haveRespond = false;
+            this.haveRespond = false;
+            this.response = null;
             this.OpenWebNetGateway.DataReceived += new EventHandler<OpenWebNetDataEventArgs>(callback);
-            this.OpenWebNetGateway.ConnectionError += new EventHandler<OpenWebNetDataEventArgs>(callbackError);
+            this.OpenWebNetGateway.ConnectionError += new EventHandler<OpenWebNetErrorEventArgs>(callbackError);
             
             this.LightingGetLightStatus(light.number.ToString());
            
-            while (!this.haveRespond || )
+            while (!this.haveRespond)
             {
                 Console.WriteLine("I'm waiting");
             }
+            // Do Return process :
+            if (this.response != null) { 
+                
+            }
 
             this.OpenWebNetGateway.DataReceived -= new EventHandler<OpenWebNetDataEventArgs>(callback);
-            */
+            this.OpenWebNetGateway.ConnectionError -= new EventHandler<OpenWebNetErrorEventArgs>(callbackError);
+
             if (this.state != light.state)
             {
                 try

@@ -189,7 +189,7 @@ namespace OpenWebNetDataContract.Model
             }
         }
 
-        public Boolean connect(String mail, String password)
+        public int connect()
         {
             //TODO: Return user & this.user = user;
 
@@ -200,7 +200,7 @@ namespace OpenWebNetDataContract.Model
             {
                 db = CAD.SQLite.getInstance();
                 DataTable result;
-                String query = "SELECT Password FROM User WHERE Mail = '" + mail + "'";
+                String query = "SELECT Password FROM User WHERE Mail = '" + this.mail + "'";
                 result = db.GetDataTable(query);
                 dbPassword = "password";
 
@@ -208,23 +208,25 @@ namespace OpenWebNetDataContract.Model
                 foreach (DataRow r in result.Rows)
                 {
                     dbPassword = r["Password"].ToString();
+
+                    if (this.password.Equals(dbPassword))
+                    {
+                        Console.WriteLine("User " + this.mail + " connected");
+                        //Connexionn SUCCES, on retourne l'id de l'utilisateur
+                        return (int)r["Id"];
+                    }
                 }
 
-                if (password.Equals(dbPassword))
-                {
-                    Console.WriteLine("User " + mail + " connected");
-                    //Connexionn SUCCES
-                    return true;
-                }
+
             }
             catch (Exception fail)
             {
                 String error = "The following error has occurred:\n\n";
                 error += fail.Message.ToString() + "\n";
                 Console.WriteLine(error);
-                return false;
+                return -1;
             }
-            return false;
+            return -1;
         }
 
         public Boolean logout()

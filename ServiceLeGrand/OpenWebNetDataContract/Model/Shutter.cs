@@ -20,6 +20,15 @@ namespace OpenWebNetDataContract.Model
             this.number = number;
         }
 
+        public Boolean update() { 
+            /*
+             * Mettre à jour en fonction de state : 1 ouvert, 0 fermé
+             * 
+             */
+            throw new NotImplementedException();
+        
+        }
+
         public Shutter add(int id_parent)
         {
             CAD.SQLite db;
