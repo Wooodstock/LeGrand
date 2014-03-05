@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using OpenWebNetDataContract.CAD;
+using System.Data;
 
 namespace OpenWebNetDataContract.Model
 {
@@ -80,7 +81,8 @@ namespace OpenWebNetDataContract.Model
             get { return number; }
             set { number = value; }
         }
-        
+
+        abstract public void retrieveById(int id);
         
     }
 }

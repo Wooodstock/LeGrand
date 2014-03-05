@@ -115,5 +115,32 @@ namespace OpenWebNetDataContract.Model
         {
             OpenWebNetGateway.GetStateCommand(WHO.Automation, where);
         }
+
+        override public void retrieveById(int id)
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                DataTable result;
+                String query = "SELECT * FROM Shutter where ID = '" + this.id + "' LIMIT 1";
+                result = db.GetDataTable(query);
+                // boucle resultat requete
+                foreach (DataRow r in result.Rows)
+                {
+                    this.id = id;
+                    this.name = r["Name"].ToString();
+                    this.state = Boolean.Parse(r["State"].ToString());
+                    this.number = int.Parse(r["Number"].ToString());
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+            }
+        }
     }
 }

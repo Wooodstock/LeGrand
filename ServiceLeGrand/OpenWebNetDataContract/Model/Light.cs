@@ -254,7 +254,7 @@ namespace OpenWebNetDataContract.Model
             OpenWebNetGateway.GetStateCommand(WHO.Lighting, where);
         }
 
-        public void retrieveById(int id)
+        override public void retrieveById(int id)
         {
             CAD.SQLite db;
 
