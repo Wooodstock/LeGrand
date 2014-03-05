@@ -140,17 +140,17 @@ namespace OpenWebNetDataContract.Model
 
 
 
-        Boolean remove(Home home)
+        public Boolean remove(Home home)
         {
             throw new NotImplementedException();
         }
 
-        Home update(Home home)
+        public Home update(Home home)
         {
             throw new NotImplementedException();
         }
 
-        void retrieveByUserId(int idUser) { 
+        public void retrieveByUserId(int idUser) { 
             // Select * from home where Id_user = idUser
             // getIdhome
             // 
