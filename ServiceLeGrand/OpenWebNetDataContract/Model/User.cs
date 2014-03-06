@@ -122,7 +122,7 @@ namespace OpenWebNetDataContract.Model
             }
         }
 
-        public bool removeUser(User user)
+        public bool remove()
         {
             CAD.SQLite db;
 
@@ -130,7 +130,7 @@ namespace OpenWebNetDataContract.Model
             {
                 db = CAD.SQLite.getInstance();
                 int updatedRow = 0;
-                String query = "DELETE FROM User WHERE Id = " + user.Id + ";";
+                String query = "DELETE FROM User WHERE Id = " + this.Id + ";";
 
                 updatedRow = db.ExecuteNonQuery(query);
                 if (updatedRow > 0)
@@ -152,11 +152,7 @@ namespace OpenWebNetDataContract.Model
                 return false;
             }
         }
-
-        public Boolean remove(User user)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public Boolean update()
         {

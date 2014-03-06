@@ -51,7 +51,7 @@ namespace OpenWebNetWinForm
             Light light = new Light(0, "Light_Salon", false, 1, 50);
             light.OpenWebNetGateway = OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command);
             light.OpenWebNetGateway.Connect();
-            light.LightingLightOFF("12");
+            light.LightingLightON("12");
             light.LightingGetLightStatus("12");
             
 
