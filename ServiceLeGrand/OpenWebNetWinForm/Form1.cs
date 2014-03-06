@@ -63,6 +63,7 @@ namespace OpenWebNetWinForm
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
+            /*
             OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command).MessageReceived += new EventHandler<OpenWebNetDataEventArgs>(gateway_MessageReceived);
             Light light = new Light(0, "Light_Salon", false, 1, 50);
             light.OpenWebNetGateway = OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command);
@@ -76,12 +77,6 @@ namespace OpenWebNetWinForm
             User user = new User();
             user = user.add("test43", "test42", "mai42l@mail.mail", "password42");
 
-            //Test AddHome
-            Home home = new Home();
-            home = home.add(null, "homeName", (float)42.3, (float)150.2);
-            
-            //Création Home
-            Home loicHome = new Home(0, "La Maison de Loic", new List<Room>(), (float)150, (float)1500);
 
             /*
             Room cuisine = new Room(0, "Cuisine", (float)50, new List<Equipment>(), new Consumption(0, "200", "200"), loicHome);

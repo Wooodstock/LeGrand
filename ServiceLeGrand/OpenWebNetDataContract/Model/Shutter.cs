@@ -20,6 +20,11 @@ namespace OpenWebNetDataContract.Model
             this.number = number;
         }
 
+        public Shutter()
+        {
+            // TODO: Complete member initialization
+        }
+
         public Boolean update() { 
             /*
              * Mettre à jour en fonction de state : 1 ouvert, 0 fermé
@@ -114,6 +119,33 @@ namespace OpenWebNetDataContract.Model
         public void AutomationGetStatus(string where)
         {
             OpenWebNetGateway.GetStateCommand(WHO.Automation, where);
+        }
+
+        override public void retrieveById(int id)
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                DataTable result;
+                String query = "SELECT * FROM Shutter where ID = " + id + " LIMIT 1";
+                result = db.GetDataTable(query);
+                // boucle resultat requete
+                foreach (DataRow r in result.Rows)
+                {
+                    this.id = id;
+                    this.name = r["Name"].ToString();
+                    this.state = Boolean.Parse(r["State"].ToString());
+                    this.number = int.Parse(r["Number"].ToString());
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+            }
         }
     }
 }

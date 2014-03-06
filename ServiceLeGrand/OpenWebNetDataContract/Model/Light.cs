@@ -21,6 +21,11 @@ namespace OpenWebNetDataContract.Model
             this.intensity = intensity;
         }
 
+        public Light()
+        {
+            // TODO: Complete member initialization
+        }
+
         private int intensity;
 
         [DataMember]
@@ -252,6 +257,34 @@ namespace OpenWebNetDataContract.Model
         public void LightingGetLightStatus(string where)
         {
             OpenWebNetGateway.GetStateCommand(WHO.Lighting, where);
+        }
+
+        override public void retrieveById(int id)
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                DataTable result;
+                String query = "SELECT * FROM Light where ID = " + id + " LIMIT 1";
+                result = db.GetDataTable(query);
+                // boucle resultat requete
+                foreach (DataRow r in result.Rows)
+                {
+                    this.id = id;
+                    this.name = r["Name"].ToString();
+                    this.state = Boolean.Parse(r["State"].ToString());
+                    this.number = int.Parse(r["Number"].ToString());
+                    this.intensity = int.Parse(r["Intensity"].ToString());
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+            }
         }
     }
 }

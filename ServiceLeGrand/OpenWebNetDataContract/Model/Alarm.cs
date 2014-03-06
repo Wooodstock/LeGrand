@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using OpenWebNetDataContract.Gateway;
+using System.Data;
 
 namespace OpenWebNetDataContract.Model
 {
@@ -37,6 +38,11 @@ namespace OpenWebNetDataContract.Model
             throw new NotImplementedException();
 
             //GetStateCommand(9, "");
+        }
+
+        override public void retrieveById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
