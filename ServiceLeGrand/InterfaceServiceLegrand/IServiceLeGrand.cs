@@ -22,7 +22,9 @@ namespace InterfaceServiceLegrand
         Equipment serviceEquipment(string order, Home home, Dictionary<object, object> dico);
 
         [OperationContract]
-        string getMot();
+        List<Program> serviceProgram(string order, Program program, Dictionary<object, object> dico);
 
+        [OperationContract]
+        User serviceUser(string order, User program, Dictionary<object, object> dico);
     }
 }
