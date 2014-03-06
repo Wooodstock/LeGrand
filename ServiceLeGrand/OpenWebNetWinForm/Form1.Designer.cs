@@ -111,7 +111,7 @@
             // tabUsers
             // 
             this.tabUsers.BackColor = System.Drawing.Color.Black;
-            this.tabUsers.BackgroundImage = global::OpenWebNetWinForm.Properties.Resources.bg_users2;
+            //this.tabUsers.BackgroundImage = global::OpenWebNetWinForm.Properties.Resources.bg_users2;
             this.tabUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabUsers.Controls.Add(this.label8);
             this.tabUsers.Controls.Add(this.label9);

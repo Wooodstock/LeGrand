@@ -161,18 +161,17 @@ namespace OpenWebNetDataContract.Model
                 DataTable result;
                 String selectQuery = "SELECT * FROM Home WHERE  ID = (SELECT ID_Home FROM User Where Id = 1 LIMIT 1)";
                 result = db.GetDataTable(selectQuery);
-                Home home = new Home();
 
                 foreach (DataRow r in result.Rows)
                 {
-                    home.id = int.Parse(r["Id"].ToString());
-                    home.name = r["Name"].ToString();
-                    home.surface = float.Parse(r["Surface"].ToString());
-                    home.volume = float.Parse(r["Volume"].ToString());
+                    this.id = int.Parse(r["Id"].ToString());
+                    this.name = r["Name"].ToString();
+                    this.surface = float.Parse(r["Surface"].ToString());
+                    this.volume = float.Parse(r["Volume"].ToString());
                 }
 
                 //get all room id
-                selectQuery = "SELECT Id FROM Rooms WHERE ID_Home = " + home.id + "";
+                selectQuery = "SELECT Id FROM Room WHERE ID_Home = " + this.id + "";
                 result = db.GetDataTable(selectQuery);
                 List<Room> rooms = new List<Room>();
 
