@@ -200,7 +200,7 @@ namespace OpenWebNetDataContract.Model
             {
                 db = CAD.SQLite.getInstance();
                 DataTable result;
-                String query = "SELECT * FROM Room where ID = '"+this.id+"' LIMIT 1";
+                String query = "SELECT * FROM Room where ID = '"+id+"' LIMIT 1";
                 result = db.GetDataTable(query);
                 // boucle resultat requete
                 foreach (DataRow r in result.Rows)
@@ -213,24 +213,24 @@ namespace OpenWebNetDataContract.Model
                 //Retrieve All Equipement
                 List<Equipment> equipments = new List<Equipment>();
                 //get all LIGHT
-                query = "SELECT * FROM Light WHERE ID_Room = "+ this.id +"";
+                query = "SELECT * FROM Light WHERE ID_Room = "+ id +"";
                 result = db.GetDataTable(query);
                 
                 foreach (DataRow r in result.Rows)
                 {
                     Equipment equipment = new Light();
-                    //equipment.retrieveById(int.Parse(r["Surface"].ToString()));
+                    equipment.retrieveById(int.Parse(r["ID"].ToString()));
                     equipments.Add(equipment);
                 }
 
                 //get all Shutter
-                query = "SELECT * FROM Shutter WHERE ID_Room = " + this.id + "";
+                query = "SELECT * FROM Shutter WHERE ID_Room = " + id + "";
                 result = db.GetDataTable(query);
 
                 foreach (DataRow r in result.Rows)
                 {
                     Equipment equipment = new Shutter();
-                    //equipment.retrieveById(int.Parse(r["Surface"].ToString()));
+                    equipment.retrieveById(int.Parse(r["ID"].ToString()));
                     equipments.Add(equipment);
                 } 
  

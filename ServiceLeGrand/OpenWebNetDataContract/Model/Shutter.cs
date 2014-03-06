@@ -129,7 +129,7 @@ namespace OpenWebNetDataContract.Model
             {
                 db = CAD.SQLite.getInstance();
                 DataTable result;
-                String query = "SELECT * FROM Shutter where ID = '" + this.id + "' LIMIT 1";
+                String query = "SELECT * FROM Shutter where ID = " + id + " LIMIT 1";
                 result = db.GetDataTable(query);
                 // boucle resultat requete
                 foreach (DataRow r in result.Rows)
