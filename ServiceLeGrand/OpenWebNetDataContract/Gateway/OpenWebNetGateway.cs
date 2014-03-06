@@ -154,6 +154,7 @@ namespace OpenWebNetDataContract.Gateway
                 {
                     if (_instance == null)
                         _instance = new OpenWebNetGateway(host, port, socketType);
+                        _instance.Connect();
                 }
             }
 

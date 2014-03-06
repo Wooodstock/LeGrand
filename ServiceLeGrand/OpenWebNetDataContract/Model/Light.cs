@@ -14,10 +14,16 @@ namespace OpenWebNetDataContract.Model
     public class Light : Equipment
     {
         Boolean haveRespond = false;
+        String response;
 
         public Light(int id, String name, Boolean state, int number, int intensity) : base(id, name, state, number)
         {
             this.intensity = intensity;
+        }
+
+        public Light()
+        {
+            // TODO: Complete member initialization
         }
 
         private int intensity;
@@ -83,29 +89,71 @@ namespace OpenWebNetDataContract.Model
         public void callback(object sender, OpenWebNetDataEventArgs e)
         {
             this.haveRespond = true;
+            this.response = e.Data;
             Console.WriteLine("I'm back");
         }
 
-        public void callbackError(object sender, OpenWebNetDataEventArgs e)
+        public void callbackError(object sender, OpenWebNetErrorEventArgs e)
         {
             this.haveRespond = true;
-            Console.WriteLine("I'm back");
+            Console.WriteLine("Error during Wall connection : "+ e.Exception.Message);
+        }
+
+        public Boolean update() {
+
+            this.OpenWebNetGateway = OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command);
+
+
+            if (this.state)
+            {
+                this.LightingLightON(this.number.ToString());
+            }
+            else {
+                this.LightingLightOFF(this.number.ToString());
+            }
+
+            //Mise a jour de la BDD
+            CAD.SQLite db;
+
+            db = CAD.SQLite.getInstance();
+            int updatedRow = 0;
+            String query = "UPDATE Light SET Name=" + this.Name + ", State=" + this.state + ", Intensity =" + this.intensity + " WHERE Id=" + this.Id + ";";
+
+            updatedRow = db.ExecuteNonQuery(query);
+
+            if (updatedRow > 0)
+            {
+                Console.WriteLine("Light updated");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("error: Light not updated");
+                return false;
+            }
+
         }
 
         public Boolean update(Light light){
-            /*this.haveRespond = false;
+            this.haveRespond = false;
+            this.response = null;
             this.OpenWebNetGateway.DataReceived += new EventHandler<OpenWebNetDataEventArgs>(callback);
-            this.OpenWebNetGateway.ConnectionError += new EventHandler<OpenWebNetDataEventArgs>(callbackError);
+            this.OpenWebNetGateway.ConnectionError += new EventHandler<OpenWebNetErrorEventArgs>(callbackError);
             
             this.LightingGetLightStatus(light.number.ToString());
            
-            while (!this.haveRespond || )
+            while (!this.haveRespond)
             {
                 Console.WriteLine("I'm waiting");
             }
+            // Do Return process :
+            if (this.response != null) { 
+                
+            }
 
             this.OpenWebNetGateway.DataReceived -= new EventHandler<OpenWebNetDataEventArgs>(callback);
-            */
+            this.OpenWebNetGateway.ConnectionError -= new EventHandler<OpenWebNetErrorEventArgs>(callbackError);
+
             if (this.state != light.state)
             {
                 try
@@ -209,6 +257,34 @@ namespace OpenWebNetDataContract.Model
         public void LightingGetLightStatus(string where)
         {
             OpenWebNetGateway.GetStateCommand(WHO.Lighting, where);
+        }
+
+        override public void retrieveById(int id)
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                DataTable result;
+                String query = "SELECT * FROM Light where ID = " + id + " LIMIT 1";
+                result = db.GetDataTable(query);
+                // boucle resultat requete
+                foreach (DataRow r in result.Rows)
+                {
+                    this.id = id;
+                    this.name = r["Name"].ToString();
+                    this.state = Boolean.Parse(r["State"].ToString());
+                    this.number = int.Parse(r["Number"].ToString());
+                    this.intensity = int.Parse(r["Intensity"].ToString());
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+            }
         }
     }
 }

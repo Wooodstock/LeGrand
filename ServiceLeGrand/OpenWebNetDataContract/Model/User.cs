@@ -122,7 +122,7 @@ namespace OpenWebNetDataContract.Model
             }
         }
 
-        public bool removeUser(User user)
+        public bool remove()
         {
             CAD.SQLite db;
 
@@ -130,7 +130,7 @@ namespace OpenWebNetDataContract.Model
             {
                 db = CAD.SQLite.getInstance();
                 int updatedRow = 0;
-                String query = "DELETE FROM User WHERE Id = " + user.Id + ";";
+                String query = "DELETE FROM User WHERE Id = " + this.Id + ";";
 
                 updatedRow = db.ExecuteNonQuery(query);
                 if (updatedRow > 0)
@@ -152,20 +152,14 @@ namespace OpenWebNetDataContract.Model
                 return false;
             }
         }
-
-        public Boolean remove(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Boolean update(User user)
+        public Boolean update()
         {
             CAD.SQLite db;
             try
             {
                 db = CAD.SQLite.getInstance();
                 int updatedRow = 0;
-                String query = "UPDATE User SET Name=" + user.Name + ", Surname=" + user.Surname + ", Mail=" + user.Mail + ", Password=" + user.Password + " WHERE Id=" + user.Id + ";";
+                String query = "UPDATE User SET Name='" + this.Name + "', Surname='" + this.Surname + "', Mail='" + this.Mail + "', Password='" + this.Password + "' WHERE Id=" + this.Id + ";";
 
                 updatedRow = db.ExecuteNonQuery(query);
 
@@ -189,7 +183,7 @@ namespace OpenWebNetDataContract.Model
             }
         }
 
-        public Boolean connect(String mail, String password)
+        public int connect()
         {
             //TODO: Return user & this.user = user;
 
@@ -200,7 +194,7 @@ namespace OpenWebNetDataContract.Model
             {
                 db = CAD.SQLite.getInstance();
                 DataTable result;
-                String query = "SELECT Password FROM User WHERE Mail = '" + mail + "'";
+                String query = "SELECT Password FROM User WHERE Mail = '" + this.mail + "'";
                 result = db.GetDataTable(query);
                 dbPassword = "password";
 
@@ -208,23 +202,58 @@ namespace OpenWebNetDataContract.Model
                 foreach (DataRow r in result.Rows)
                 {
                     dbPassword = r["Password"].ToString();
+
+                    if (this.password.Equals(dbPassword))
+                    {
+                        Console.WriteLine("User " + this.mail + " connected");
+                        //Connexionn SUCCES, on retourne l'id de l'utilisateur
+                        return (int)r["Id"];
+                    }
                 }
 
-                if (password.Equals(dbPassword))
-                {
-                    Console.WriteLine("User " + mail + " connected");
-                    //Connexionn SUCCES
-                    return true;
-                }
+
             }
             catch (Exception fail)
             {
                 String error = "The following error has occurred:\n\n";
                 error += fail.Message.ToString() + "\n";
                 Console.WriteLine(error);
-                return false;
+                return -1;
             }
-            return false;
+            return -1;
+        }
+
+        public static List<User> retrieveAllUser()
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                DataTable result;
+                String query = "SELECT * FROM User";
+                result = db.GetDataTable(query);
+                List<User> users = new List<User>();
+                // boucle resultat reauete
+                foreach (DataRow r in result.Rows)
+                {
+                    User user = new User();
+                    user.id = int.Parse(r["Id"].ToString());
+                    user.name = r["Name"].ToString();
+                    user.surname = r["Surname"].ToString();
+                    user.mail = r["Mail"].ToString();
+                    user.password = r["Password"].ToString();
+                    users.Add(user);
+                }
+                return users;
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return null;
+            }
         }
 
         public Boolean logout()

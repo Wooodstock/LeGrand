@@ -19,10 +19,8 @@ namespace InterfaceServiceLegrand
         Home serviceHome(string order, Home home, Dictionary<object, object> dico);
 
         [OperationContract]
-        Equipment serviceEquipment(string order, Home home, Dictionary<object, object> dico);
+        Equipment serviceEquipment(string order, Equipment equipment, Dictionary<object, object> dico);
 
-        [OperationContract]
-        List<Program> serviceProgram(string order, Program program, Dictionary<object, object> dico);
 
         [OperationContract]
         User serviceUser(string order, User program, Dictionary<object, object> dico);

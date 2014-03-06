@@ -192,5 +192,57 @@ namespace OpenWebNetDataContract.Model
             throw new NotImplementedException();
         }
 
+        public void retrieveById(int id)
+        {
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                DataTable result;
+                String query = "SELECT * FROM Room where ID = '"+id+"' LIMIT 1";
+                result = db.GetDataTable(query);
+                // boucle resultat requete
+                foreach (DataRow r in result.Rows)
+                {
+                    this.id = id;
+                    this.name = r["Name"].ToString();
+                    this.surface = float.Parse(r["Surface"].ToString());
+                }
+
+                //Retrieve All Equipement
+                List<Equipment> equipments = new List<Equipment>();
+                //get all LIGHT
+                query = "SELECT * FROM Light WHERE ID_Room = "+ id +"";
+                result = db.GetDataTable(query);
+                
+                foreach (DataRow r in result.Rows)
+                {
+                    Equipment equipment = new Light();
+                    equipment.retrieveById(int.Parse(r["ID"].ToString()));
+                    equipments.Add(equipment);
+                }
+
+                //get all Shutter
+                query = "SELECT * FROM Shutter WHERE ID_Room = " + id + "";
+                result = db.GetDataTable(query);
+
+                foreach (DataRow r in result.Rows)
+                {
+                    Equipment equipment = new Shutter();
+                    equipment.retrieveById(int.Parse(r["ID"].ToString()));
+                    equipments.Add(equipment);
+                } 
+ 
+                this.equipments = equipments;
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+            }
+        }
+
     }
 }

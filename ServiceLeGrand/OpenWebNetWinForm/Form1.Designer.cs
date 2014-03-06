@@ -32,6 +32,12 @@
             this.buttonTest = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMaison = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnaddPiece = new System.Windows.Forms.Button();
+            this.lbpiece = new System.Windows.Forms.Label();
+            this.tbaddPiece = new System.Windows.Forms.TextBox();
             this.tabUsers = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,12 +62,6 @@
             this.btnaddUser = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lbpiece = new System.Windows.Forms.Label();
-            this.tbaddPiece = new System.Windows.Forms.TextBox();
-            this.btnaddPiece = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabMaison.SuspendLayout();
             this.tabUsers.SuspendLayout();
@@ -108,10 +108,63 @@
             this.tabMaison.TabIndex = 0;
             this.tabMaison.Text = "Maison";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(423, 158);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 105;
+            this.label1.Text = "Nom de la pièce";
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(426, 182);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(251, 21);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Modifier";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(508, 155);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(169, 21);
+            this.comboBox1.TabIndex = 3;
+            // 
+            // btnaddPiece
+            // 
+            this.btnaddPiece.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnaddPiece.Location = new System.Drawing.Point(60, 183);
+            this.btnaddPiece.Name = "btnaddPiece";
+            this.btnaddPiece.Size = new System.Drawing.Size(251, 23);
+            this.btnaddPiece.TabIndex = 2;
+            this.btnaddPiece.Text = "Ajouter";
+            this.btnaddPiece.UseVisualStyleBackColor = true;
+            // 
+            // lbpiece
+            // 
+            this.lbpiece.AutoSize = true;
+            this.lbpiece.Location = new System.Drawing.Point(57, 158);
+            this.lbpiece.Name = "lbpiece";
+            this.lbpiece.Size = new System.Drawing.Size(79, 13);
+            this.lbpiece.TabIndex = 101;
+            this.lbpiece.Text = "Nom de la pièce";
+            // 
+            // tbaddPiece
+            // 
+            this.tbaddPiece.Location = new System.Drawing.Point(142, 155);
+            this.tbaddPiece.Name = "tbaddPiece";
+            this.tbaddPiece.Size = new System.Drawing.Size(169, 21);
+            this.tbaddPiece.TabIndex = 1;
+            // 
             // tabUsers
             // 
             this.tabUsers.BackColor = System.Drawing.Color.Black;
-            this.tabUsers.BackgroundImage = global::OpenWebNetWinForm.Properties.Resources.bg_users2;
+            //this.tabUsers.BackgroundImage = global::OpenWebNetWinForm.Properties.Resources.bg_users2;
             this.tabUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabUsers.Controls.Add(this.label8);
             this.tabUsers.Controls.Add(this.label9);
@@ -216,6 +269,7 @@
             this.btnupdateUser.TabIndex = 12;
             this.btnupdateUser.Text = "Enregistrer";
             this.btnupdateUser.UseVisualStyleBackColor = true;
+            this.btnupdateUser.Click += new System.EventHandler(this.btnupdateUser_Click);
             // 
             // label7
             // 
@@ -290,6 +344,7 @@
             this.cbUsers.Name = "cbUsers";
             this.cbUsers.Size = new System.Drawing.Size(172, 21);
             this.cbUsers.TabIndex = 6;
+            this.cbUsers.SelectedIndexChanged += new System.EventHandler(this.cbUsers_SelectedIndexChanged);
             // 
             // tbaddPrenom
             // 
@@ -307,6 +362,7 @@
             this.btndelUser.TabIndex = 7;
             this.btndelUser.Text = "Supprimer";
             this.btndelUser.UseVisualStyleBackColor = true;
+            this.btndelUser.Click += new System.EventHandler(this.btndelUser_Click);
             // 
             // btnaddUser
             // 
@@ -329,59 +385,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(169, 89);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // lbpiece
-            // 
-            this.lbpiece.AutoSize = true;
-            this.lbpiece.Location = new System.Drawing.Point(57, 158);
-            this.lbpiece.Name = "lbpiece";
-            this.lbpiece.Size = new System.Drawing.Size(79, 13);
-            this.lbpiece.TabIndex = 101;
-            this.lbpiece.Text = "Nom de la pièce";
-            // 
-            // tbaddPiece
-            // 
-            this.tbaddPiece.Location = new System.Drawing.Point(142, 155);
-            this.tbaddPiece.Name = "tbaddPiece";
-            this.tbaddPiece.Size = new System.Drawing.Size(169, 21);
-            this.tbaddPiece.TabIndex = 1;
-            // 
-            // btnaddPiece
-            // 
-            this.btnaddPiece.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnaddPiece.Location = new System.Drawing.Point(60, 183);
-            this.btnaddPiece.Name = "btnaddPiece";
-            this.btnaddPiece.Size = new System.Drawing.Size(251, 23);
-            this.btnaddPiece.TabIndex = 2;
-            this.btnaddPiece.Text = "Ajouter";
-            this.btnaddPiece.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(508, 155);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 21);
-            this.comboBox1.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(426, 182);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(251, 21);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Modifier";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(423, 158);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 105;
-            this.label1.Text = "Nom de la pièce";
             // 
             // Form1
             // 

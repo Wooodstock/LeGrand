@@ -171,5 +171,10 @@ namespace OpenWebNetDataContract.Model
         {
             OpenWebNetGateway.SendCommand(WHO.Heating, "303", string.Format("#{0}", where));
         }
+
+        override public void retrieveById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
