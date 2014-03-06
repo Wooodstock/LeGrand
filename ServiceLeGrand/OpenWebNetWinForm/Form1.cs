@@ -36,6 +36,12 @@ namespace OpenWebNetWinForm
             host = new ServiceHost(typeof(ServiceLegrand.ServiceLegrand));
             host.Open();
 
+            loadcombobox();
+        }
+
+        private void loadcombobox()
+        {
+            cbUsers.Items.Clear();
             Users = new List<User>();
             Users = User.retrieveAllUser();
 
@@ -43,7 +49,6 @@ namespace OpenWebNetWinForm
             {
                 cbUsers.Items.Add(user.Name);
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -109,7 +114,9 @@ namespace OpenWebNetWinForm
         private void button2_Click(object sender, EventArgs e)
         {
             User Client = new User();
-            Client = Client.add(tbaddPrenom.Text, tbaddNom.Text, tbupdateEmail.Text, tbupdateMdp.Text);
+            Client = Client.add(tbaddPrenom.Text, tbaddNom.Text, tbaddEmail.Text, tbaddMdp.Text);
+            cbUsers.Items.Clear();
+            loadcombobox();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -119,19 +126,31 @@ namespace OpenWebNetWinForm
 
         private void btnupdateUser_Click(object sender, EventArgs e)
         {
+            updatedUser.Name = tbupdatePrenom.Text;
+            updatedUser.Surname = tbupdateNom.Text;
+            updatedUser.Mail = tbupdateEmail.Text;
+            updatedUser.Password = tbupdateMdp.Text;
             updatedUser.update();
+            loadcombobox();
         }
 
         private void cbUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-                       // get the selected text, you can also use SelectedIndex and SelectedValue
+            // get the selected text, you can also use SelectedIndex and SelectedValue
             int selectedIndex = cbUsers.SelectedIndex;
 
             updatedUser = Users.ElementAt(selectedIndex);
+
             tbupdatePrenom.Text = updatedUser.Name;
             tbupdateNom.Text = updatedUser.Surname;
             tbupdateEmail.Text = updatedUser.Mail;
             tbupdateMdp.Text = updatedUser.Password;
+        }
+
+        private void btndelUser_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = cbUsers.SelectedIndex;
+            updatedUser = Users.ElementAt(selectedIndex);
         }
     }
 }
