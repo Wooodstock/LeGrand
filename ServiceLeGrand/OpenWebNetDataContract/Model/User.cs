@@ -152,8 +152,6 @@ namespace OpenWebNetDataContract.Model
                 return false;
             }
         }
-        
-
         public Boolean update()
         {
             CAD.SQLite db;
@@ -161,7 +159,7 @@ namespace OpenWebNetDataContract.Model
             {
                 db = CAD.SQLite.getInstance();
                 int updatedRow = 0;
-                String query = "UPDATE User SET Name=" + this.Name + ", Surname=" + this.Surname + ", Mail=" + this.Mail + ", Password=" + this.Password + " WHERE Id=" + this.Id + ";";
+                String query = "UPDATE User SET Name='" + this.Name + "', Surname='" + this.Surname + "', Mail='" + this.Mail + "', Password='" + this.Password + "' WHERE Id=" + this.Id + ";";
 
                 updatedRow = db.ExecuteNonQuery(query);
 
@@ -225,7 +223,7 @@ namespace OpenWebNetDataContract.Model
             return -1;
         }
 
-        static List<User> retrieveAllUser()
+        public static List<User> retrieveAllUser()
         {
             CAD.SQLite db;
 
@@ -240,7 +238,11 @@ namespace OpenWebNetDataContract.Model
                 foreach (DataRow r in result.Rows)
                 {
                     User user = new User();
+                    user.id = int.Parse(r["Id"].ToString());
                     user.name = r["Name"].ToString();
+                    user.surname = r["Surname"].ToString();
+                    user.mail = r["Mail"].ToString();
+                    user.password = r["Password"].ToString();
                     users.Add(user);
                 }
                 return users;

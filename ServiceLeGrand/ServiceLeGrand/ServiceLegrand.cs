@@ -56,7 +56,6 @@ namespace ServiceLegrand
             return dico;
         }
 
-
         /*
          * order = "lightOn"
          * allume light de l'équipement envoyé
