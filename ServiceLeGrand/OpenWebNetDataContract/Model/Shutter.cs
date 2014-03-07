@@ -25,13 +25,41 @@ namespace OpenWebNetDataContract.Model
             // TODO: Complete member initialization
         }
 
-        public Boolean update() { 
-            /*
-             * Mettre à jour en fonction de state : 1 ouvert, 0 fermé
-             * 
-             */
-            throw new NotImplementedException();
-        
+        override public Boolean update()
+        {
+
+            this.OpenWebNetGateway = OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command);
+
+
+            if (this.state)
+            {
+                this.AutomationUp(this.number.ToString());
+            }
+            else
+            {
+                this.AutomationDown(this.number.ToString());
+            }
+
+            //Mise a jour de la BDD
+            CAD.SQLite db;
+
+            db = CAD.SQLite.getInstance();
+            int updatedRow = 0;
+            String query = "UPDATE Shutter SET Name='" + this.Name + "', State='" + this.state + "' WHERE Id=" + this.Id + ";";
+
+            updatedRow = db.ExecuteNonQuery(query);
+
+            if (updatedRow > 0)
+            {
+                Console.WriteLine("shutter updated");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("error: shutter not updated");
+                return false;
+            }
+
         }
 
         public Shutter add(int id_parent)

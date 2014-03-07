@@ -176,5 +176,10 @@ namespace OpenWebNetDataContract.Model
         {
             throw new NotImplementedException();
         }
+
+        override public Boolean update() {
+            throw new NotImplementedException();
+        }
+
     }
 }

@@ -75,24 +75,17 @@ namespace ServiceLegrand
         public Equipment serviceEquipment(string order, Equipment equipment, Dictionary<object, object> dico)
         {
             switch(order){
-                case ("lightOn"): 
-                    Light light = (Light)equipment;
-                    light.update();
-                    break;
-                case ("lightOff"):
-                    Light light2 = (Light)equipment;
-                    light2.update();
+                case ("switch"):
+                    equipment.update();
                     break;
                 case ("shutterUp"):
-                    Shutter shutterUp = (Shutter)equipment;
-                    shutterUp.update();
+                    equipment.update();
                     break;
                 case ("shutterDown"):
-                    Shutter shutterDown = (Shutter)equipment;
-                    shutterDown.update();
+                    equipment.update();
                     break;
             }
-            return null;
+            return equipment;
         }
     }
 }

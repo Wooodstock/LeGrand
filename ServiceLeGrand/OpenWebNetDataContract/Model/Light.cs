@@ -99,7 +99,7 @@ namespace OpenWebNetDataContract.Model
             Console.WriteLine("Error during Wall connection : "+ e.Exception.Message);
         }
 
-        public Boolean update() {
+        override public Boolean update() {
 
             this.OpenWebNetGateway = OpenWebNetGateway.getInstance("172.16.0.209", 20000, OpenSocketType.Command);
 
@@ -117,7 +117,7 @@ namespace OpenWebNetDataContract.Model
 
             db = CAD.SQLite.getInstance();
             int updatedRow = 0;
-            String query = "UPDATE Light SET Name=" + this.Name + ", State=" + this.state + ", Intensity =" + this.intensity + " WHERE Id=" + this.Id + ";";
+            String query = "UPDATE Light SET Name='" + this.Name + "', State='" + this.state + "', Intensity ='" + this.intensity + "' WHERE Id=" + this.Id + ";";
 
             updatedRow = db.ExecuteNonQuery(query);
 
@@ -132,72 +132,6 @@ namespace OpenWebNetDataContract.Model
                 return false;
             }
 
-        }
-
-        public Boolean update(Light light){
-            this.haveRespond = false;
-            this.response = null;
-            this.OpenWebNetGateway.DataReceived += new EventHandler<OpenWebNetDataEventArgs>(callback);
-            this.OpenWebNetGateway.ConnectionError += new EventHandler<OpenWebNetErrorEventArgs>(callbackError);
-            
-            this.LightingGetLightStatus(light.number.ToString());
-           
-            while (!this.haveRespond)
-            {
-                Console.WriteLine("I'm waiting");
-            }
-            // Do Return process :
-            if (this.response != null) { 
-                
-            }
-
-            this.OpenWebNetGateway.DataReceived -= new EventHandler<OpenWebNetDataEventArgs>(callback);
-            this.OpenWebNetGateway.ConnectionError -= new EventHandler<OpenWebNetErrorEventArgs>(callbackError);
-
-            if (this.state != light.state)
-            {
-                try
-                {
-                    //Mise a jour du WALL
-                    switch (light.state)
-                    {
-                        case true:
-                            this.LightingLightON(light.number.ToString());
-                            break;
-
-                        case false:
-                            this.LightingLightOFF(light.number.ToString());
-                            break;
-                    }
-                    //Mise a jour de la BDD
-                    CAD.SQLite db;
-               
-                    db = CAD.SQLite.getInstance();
-                    int updatedRow = 0;
-                    String query = "UPDATE Light SET Name=" + light.Name + ", State=" + light.state + ", Intensity =" + light.intensity + " WHERE Id=" + light.Id + ";";
-
-                    updatedRow = db.ExecuteNonQuery(query);
-
-                    if (updatedRow > 0)
-                    {
-                        Console.WriteLine("Light updated");
-                        return true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("error: Light not updated");
-                        return false;
-                    }
-                }
-                catch (Exception fail)
-                {
-                    String error = "ERROR LIGHT: The following error has occurred:\n\n";
-                    error += fail.Message.ToString() + "\n";
-                    Console.WriteLine(error);
-                    return false;
-                }
-            }
-            return true;
         }
 
         public Boolean removeLight(Light light)

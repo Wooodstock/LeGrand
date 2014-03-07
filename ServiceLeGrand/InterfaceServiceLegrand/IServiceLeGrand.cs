@@ -25,6 +25,6 @@ namespace InterfaceServiceLegrand
         Program serviceProgram(string order, Program program, Dictionary<object, object> dico);
 
         [OperationContract]
-        User serviceUser(string order, User program, Dictionary<object, object> dico);
+        Dictionary<object, object> serviceUser(string order, User user, Dictionary<object, object> dico);
     }
 }

@@ -83,6 +83,7 @@ namespace OpenWebNetDataContract.Model
         }
 
         abstract public void retrieveById(int id);
+        abstract public Boolean update();
         
     }
 }
