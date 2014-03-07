@@ -28,6 +28,20 @@ namespace ServiceLegrand
         }
 
         /*
+         * order :  "getProgram"
+         * return the Home in base for user connected
+         *  dico['user'] return an User object
+         * 
+         */
+
+        public Program serviceProgram(string order, Program program, Dictionary<object, object> dico)
+        {
+
+
+            return program;
+        }
+
+        /*
          * order = "connect"
          * return user if succeed, null if failed
          * 
