@@ -70,15 +70,47 @@ namespace OpenWebNetDataContract.Model
             set { rooms = value; }
         }
 
+        public static List<Program> retrieveAllProgramm()
+        {
+            CAD.SQLite db;
+            try
+            {
+                db = CAD.SQLite.getInstance();
+
+                DataTable result;
+                String selectQuery = "SELECT * FROM Programme";
+                result = db.GetDataTable(selectQuery);
+                List<Program> programs = new List<Program>();
+
+                foreach (DataRow r in result.Rows)
+                {
+                    Program program = new Program();  
+                    program.id = int.Parse(r["ID"].ToString());
+                    program.name =  r["Name"].ToString();
+                    DateTime startHour = new DateTime();
+                    startHour = DateTime.ParseExact(r["StartHour"].ToString(), "yyyy-MM-dd HH:mm:ss", null);
+                    program.startHour = startHour;
+                }
+                return programs;
+            }
+            catch (Exception fail)
+            {
+                String error = "Erreur retreive Home - The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+
+                return null;
+            }
+
+
+        }
+
         Program add(String name, DateTime startHour, List<Day> workingDays, List<Room> rooms)
         {
             CAD.SQLite db;
 
-            //TODO: Check if user deja en base
-
             try
             {
-                //Ajout de l'user en base
                 db = CAD.SQLite.getInstance();
                 String startHourFormat = startHour.ToString("yyyy-MM-dd HH:mm:ss");
                 String InsertQuery = "INSERT INTO Program (Name, StartHour) VALUES ('" + name + "', '" + startHourFormat + "');";
