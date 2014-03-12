@@ -136,6 +136,11 @@ namespace OpenWebNetDataContract.Model
         {
             throw new NotImplementedException();
         }
+
+        void run() { 
+          // TODO 
+          // apply programm
+        }
         
         
     }

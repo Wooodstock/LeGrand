@@ -41,6 +41,26 @@ namespace OpenWebNetDataContract.Model
             set { name = value; }
         }
 
+        public DayOfWeek dayInWeek() {
+
+            if (this.name == "Lundi"){
+                return DayOfWeek.Monday;
+            } else if(this.name == "Mardi"){
+                return DayOfWeek.Tuesday;
+            } else if (this.name == "Mercredi") {
+                return DayOfWeek.Wednesday;
+            } else if (this.name == "Jeudi") {
+                return DayOfWeek.Thursday;
+            } else if (this.name == "Vendredi"){
+                return DayOfWeek.Friday;
+            } else if (this.name == "Samedi"){
+                return DayOfWeek.Saturday;
+            } else if (this.name == "Dimanche"){
+                return DayOfWeek.Sunday;
+            }
+            return DayOfWeek.Sunday;
+        }
+
         public static void retrieveById(int id)
         {
             CAD.SQLite db;
