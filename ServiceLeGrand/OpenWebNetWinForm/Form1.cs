@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using OpenWebNetDataContract.Model;
 using OpenWebNetDataContract.Gateway;
 
+
 namespace OpenWebNetWinForm
 {
     public partial class Form1 : Form
@@ -24,6 +25,7 @@ namespace OpenWebNetWinForm
         private User updatedUser;
         private Equipment updatedequipment;
         private Home maison;
+        private Timer timer;
 
         public Form1()
         {
@@ -45,6 +47,56 @@ namespace OpenWebNetWinForm
             maison.retrieveByUserId(1);
 
             loadcombobox();
+        }
+
+        private void launchTick() {
+            /* Adds the event and the event handler for the method that will 
+   process the timer event to the timer. */
+            timer.Tick += new EventHandler(Tick);
+
+            // Sets the timer interval to 5 seconds.
+            timer.Interval = 60000;
+            timer.Start();
+        
+        }
+
+        private void Tick(Object myObject, EventArgs myEventArgs)
+        {
+            checkPrograms();
+        }
+
+        private void checkPrograms() {
+
+            // Notre liste de programmes
+            List<OpenWebNetDataContract.Model.Program> programs = new List<OpenWebNetDataContract.Model.Program>();
+
+            // TODO : retrive all programms
+
+            // Notre date courante
+            DateTime currentDateTime = DateTime.Now;
+
+            foreach (OpenWebNetDataContract.Model.Program program in programs) { 
+                // Si le programme a une liste de jour programmés
+                if(program.WorkingDays.Count > 0){
+                    foreach(OpenWebNetDataContract.Model.Day day in program.WorkingDays){
+                        if (currentDateTime.DayOfWeek == day.dayInWeek()
+                            && currentDateTime.Hour == program.StartHour.Hour
+                            && currentDateTime.Hour == program.StartHour.Hour)
+                        {
+                            program.run();
+                        }
+                    
+                    }
+                } else {
+                    if (currentDateTime.Hour == program.StartHour.Hour
+                        && currentDateTime.Hour == program.StartHour.Hour)
+                    {
+                        program.run();
+                    }
+                }
+            
+            }
+        
         }
 
         private void loadcombobox()
