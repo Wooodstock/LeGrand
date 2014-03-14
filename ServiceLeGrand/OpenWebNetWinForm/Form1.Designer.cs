@@ -31,10 +31,25 @@
             this.components = new System.ComponentModel.Container();
             this.buttonTest = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabMaison = new System.Windows.Forms.TabPage();
+            this.s = new System.Windows.Forms.TabPage();
+            this.delEquip = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tbaddidEquip = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.addEquip = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbupdateidEquip = new System.Windows.Forms.TextBox();
+            this.cbaddEquip = new System.Windows.Forms.ComboBox();
+            this.btnupdateRoom = new System.Windows.Forms.Button();
+            this.deleteEquip = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.updateEquip = new System.Windows.Forms.Button();
+            this.cbEquip = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.deleteRoom = new System.Windows.Forms.Button();
+            this.cbRooms = new System.Windows.Forms.ComboBox();
             this.btnaddPiece = new System.Windows.Forms.Button();
             this.lbpiece = new System.Windows.Forms.Label();
             this.tbaddPiece = new System.Windows.Forms.TextBox();
@@ -63,7 +78,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
-            this.tabMaison.SuspendLayout();
+            this.s.SuspendLayout();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +96,7 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabMaison);
+            this.tabControl1.Controls.Add(this.s);
             this.tabControl1.Controls.Add(this.tabUsers);
             this.tabControl1.Font = new System.Drawing.Font("Corbel", 8.25F);
             this.tabControl1.Location = new System.Drawing.Point(12, 107);
@@ -90,50 +105,204 @@
             this.tabControl1.Size = new System.Drawing.Size(748, 416);
             this.tabControl1.TabIndex = 2;
             // 
-            // tabMaison
+            // s
             // 
-            this.tabMaison.BackColor = System.Drawing.Color.Black;
-            this.tabMaison.BackgroundImage = global::OpenWebNetWinForm.Properties.Resources.bg_home;
-            this.tabMaison.Controls.Add(this.label1);
-            this.tabMaison.Controls.Add(this.button1);
-            this.tabMaison.Controls.Add(this.comboBox1);
-            this.tabMaison.Controls.Add(this.btnaddPiece);
-            this.tabMaison.Controls.Add(this.lbpiece);
-            this.tabMaison.Controls.Add(this.tbaddPiece);
-            this.tabMaison.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.tabMaison.Location = new System.Drawing.Point(4, 22);
-            this.tabMaison.Name = "tabMaison";
-            this.tabMaison.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMaison.Size = new System.Drawing.Size(740, 390);
-            this.tabMaison.TabIndex = 0;
-            this.tabMaison.Text = "Maison";
+            this.s.BackColor = System.Drawing.Color.Black;
+            this.s.BackgroundImage = global::OpenWebNetWinForm.Properties.Resources.bg_home;
+            this.s.Controls.Add(this.delEquip);
+            this.s.Controls.Add(this.label15);
+            this.s.Controls.Add(this.tbaddidEquip);
+            this.s.Controls.Add(this.label16);
+            this.s.Controls.Add(this.addEquip);
+            this.s.Controls.Add(this.label14);
+            this.s.Controls.Add(this.label13);
+            this.s.Controls.Add(this.tbupdateidEquip);
+            this.s.Controls.Add(this.cbaddEquip);
+            this.s.Controls.Add(this.btnupdateRoom);
+            this.s.Controls.Add(this.deleteEquip);
+            this.s.Controls.Add(this.label12);
+            this.s.Controls.Add(this.label2);
+            this.s.Controls.Add(this.updateEquip);
+            this.s.Controls.Add(this.cbEquip);
+            this.s.Controls.Add(this.label1);
+            this.s.Controls.Add(this.deleteRoom);
+            this.s.Controls.Add(this.cbRooms);
+            this.s.Controls.Add(this.btnaddPiece);
+            this.s.Controls.Add(this.lbpiece);
+            this.s.Controls.Add(this.tbaddPiece);
+            this.s.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.s.Location = new System.Drawing.Point(4, 22);
+            this.s.Name = "s";
+            this.s.Padding = new System.Windows.Forms.Padding(3);
+            this.s.Size = new System.Drawing.Size(740, 390);
+            this.s.TabIndex = 0;
+            this.s.Text = "Maison";
+            // 
+            // delEquip
+            // 
+            this.delEquip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.delEquip.Location = new System.Drawing.Point(398, 262);
+            this.delEquip.Name = "delEquip";
+            this.delEquip.Size = new System.Drawing.Size(124, 22);
+            this.delEquip.TabIndex = 126;
+            this.delEquip.Text = "Supprimer";
+            this.delEquip.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(591, 213);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(55, 13);
+            this.label15.TabIndex = 125;
+            this.label15.Text = "Identifiant";
+            // 
+            // tbaddidEquip
+            // 
+            this.tbaddidEquip.Location = new System.Drawing.Point(652, 210);
+            this.tbaddidEquip.Name = "tbaddidEquip";
+            this.tbaddidEquip.Size = new System.Drawing.Size(32, 21);
+            this.tbaddidEquip.TabIndex = 124;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(558, 186);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(30, 13);
+            this.label16.TabIndex = 122;
+            this.label16.Text = "Nom";
+            // 
+            // addEquip
+            // 
+            this.addEquip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.addEquip.Location = new System.Drawing.Point(561, 237);
+            this.addEquip.Name = "addEquip";
+            this.addEquip.Size = new System.Drawing.Size(124, 22);
+            this.addEquip.TabIndex = 121;
+            this.addEquip.Text = "Ajouter";
+            this.addEquip.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(428, 214);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(55, 13);
+            this.label14.TabIndex = 120;
+            this.label14.Text = "Identifiant";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(582, 155);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 13);
+            this.label13.TabIndex = 117;
+            this.label13.Text = "Ajout equipement";
+            // 
+            // tbupdateidEquip
+            // 
+            this.tbupdateidEquip.Location = new System.Drawing.Point(489, 210);
+            this.tbupdateidEquip.Name = "tbupdateidEquip";
+            this.tbupdateidEquip.Size = new System.Drawing.Size(32, 21);
+            this.tbupdateidEquip.TabIndex = 116;
+            // 
+            // cbaddEquip
+            // 
+            this.cbaddEquip.FormattingEnabled = true;
+            this.cbaddEquip.Location = new System.Drawing.Point(595, 183);
+            this.cbaddEquip.Name = "cbaddEquip";
+            this.cbaddEquip.Size = new System.Drawing.Size(90, 21);
+            this.cbaddEquip.TabIndex = 115;
+            // 
+            // btnupdateRoom
+            // 
+            this.btnupdateRoom.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnupdateRoom.Location = new System.Drawing.Point(61, 281);
+            this.btnupdateRoom.Name = "btnupdateRoom";
+            this.btnupdateRoom.Size = new System.Drawing.Size(123, 21);
+            this.btnupdateRoom.TabIndex = 113;
+            this.btnupdateRoom.Text = "Modifier";
+            this.btnupdateRoom.UseVisualStyleBackColor = true;
+            this.btnupdateRoom.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // deleteEquip
+            // 
+            this.deleteEquip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.deleteEquip.Location = new System.Drawing.Point(419, 392);
+            this.deleteEquip.Name = "deleteEquip";
+            this.deleteEquip.Size = new System.Drawing.Size(253, 22);
+            this.deleteEquip.TabIndex = 111;
+            this.deleteEquip.Text = "Supprimer";
+            this.deleteEquip.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(395, 186);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(30, 13);
+            this.label12.TabIndex = 110;
+            this.label12.Text = "Nom";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(407, 155);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 13);
+            this.label2.TabIndex = 108;
+            this.label2.Text = "Equipements actuels";
+            // 
+            // updateEquip
+            // 
+            this.updateEquip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.updateEquip.Location = new System.Drawing.Point(398, 236);
+            this.updateEquip.Name = "updateEquip";
+            this.updateEquip.Size = new System.Drawing.Size(124, 22);
+            this.updateEquip.TabIndex = 107;
+            this.updateEquip.Text = "Modifier";
+            this.updateEquip.UseVisualStyleBackColor = true;
+            this.updateEquip.Click += new System.EventHandler(this.updateEquip_Click);
+            // 
+            // cbEquip
+            // 
+            this.cbEquip.FormattingEnabled = true;
+            this.cbEquip.Location = new System.Drawing.Point(432, 183);
+            this.cbEquip.Name = "cbEquip";
+            this.cbEquip.Size = new System.Drawing.Size(90, 21);
+            this.cbEquip.TabIndex = 106;
+            this.cbEquip.SelectedIndexChanged += new System.EventHandler(this.cbEquip_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(423, 158);
+            this.label1.Location = new System.Drawing.Point(57, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 105;
             this.label1.Text = "Nom de la pièce";
             // 
-            // button1
+            // deleteRoom
             // 
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(426, 182);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(251, 21);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Modifier";
-            this.button1.UseVisualStyleBackColor = true;
+            this.deleteRoom.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.deleteRoom.Location = new System.Drawing.Point(190, 281);
+            this.deleteRoom.Name = "deleteRoom";
+            this.deleteRoom.Size = new System.Drawing.Size(123, 21);
+            this.deleteRoom.TabIndex = 4;
+            this.deleteRoom.Text = "Supprimer";
+            this.deleteRoom.UseVisualStyleBackColor = true;
+            this.deleteRoom.Click += new System.EventHandler(this.deleteRoom_Click);
             // 
-            // comboBox1
+            // cbRooms
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(508, 155);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 21);
-            this.comboBox1.TabIndex = 3;
+            this.cbRooms.FormattingEnabled = true;
+            this.cbRooms.Location = new System.Drawing.Point(60, 254);
+            this.cbRooms.Name = "cbRooms";
+            this.cbRooms.Size = new System.Drawing.Size(251, 21);
+            this.cbRooms.TabIndex = 3;
+            this.cbRooms.SelectedIndexChanged += new System.EventHandler(this.cbRooms_SelectedIndexChanged);
             // 
             // btnaddPiece
             // 
@@ -144,6 +313,7 @@
             this.btnaddPiece.TabIndex = 2;
             this.btnaddPiece.Text = "Ajouter";
             this.btnaddPiece.UseVisualStyleBackColor = true;
+            this.btnaddPiece.Click += new System.EventHandler(this.btnaddPiece_Click);
             // 
             // lbpiece
             // 
@@ -164,7 +334,7 @@
             // tabUsers
             // 
             this.tabUsers.BackColor = System.Drawing.Color.Black;
-            //this.tabUsers.BackgroundImage = global::OpenWebNetWinForm.Properties.Resources.bg_users2;
+            this.tabUsers.BackgroundImage = global::OpenWebNetWinForm.Properties.Resources.bg_users;
             this.tabUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabUsers.Controls.Add(this.label8);
             this.tabUsers.Controls.Add(this.label9);
@@ -373,7 +543,7 @@
             this.btnaddUser.TabIndex = 5;
             this.btnaddUser.Text = "Ajouter";
             this.btnaddUser.UseVisualStyleBackColor = true;
-            this.btnaddUser.Click += new System.EventHandler(this.button2_Click);
+            this.btnaddUser.Click += new System.EventHandler(this.btnaddUser_Click);
             // 
             // pictureBox1
             // 
@@ -400,8 +570,8 @@
             this.Text = "LEGRAND - Home Center";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabMaison.ResumeLayout(false);
-            this.tabMaison.PerformLayout();
+            this.s.ResumeLayout(false);
+            this.s.PerformLayout();
             this.tabUsers.ResumeLayout(false);
             this.tabUsers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -413,7 +583,7 @@
 
         private System.Windows.Forms.Button buttonTest;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabMaison;
+        private System.Windows.Forms.TabPage s;
         private System.Windows.Forms.TabPage tabUsers;
         private System.Windows.Forms.Button btndelUser;
         private System.Windows.Forms.Button btnaddUser;
@@ -439,11 +609,26 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button deleteRoom;
+        private System.Windows.Forms.ComboBox cbRooms;
         private System.Windows.Forms.Button btnaddPiece;
         private System.Windows.Forms.Label lbpiece;
         private System.Windows.Forms.TextBox tbaddPiece;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button updateEquip;
+        private System.Windows.Forms.ComboBox cbEquip;
+        private System.Windows.Forms.Button deleteEquip;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tbupdateidEquip;
+        private System.Windows.Forms.ComboBox cbaddEquip;
+        private System.Windows.Forms.Button btnupdateRoom;
+        private System.Windows.Forms.Button delEquip;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox tbaddidEquip;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button addEquip;
+        private System.Windows.Forms.Label label14;
     }
 }
 

@@ -18,7 +18,12 @@ namespace OpenWebNetWinForm
     {
         private ServiceHost host;
         private List<User> Users;
+        private List<Room> rooms;
+        private List<Equipment> equips;
+        private Room updatedRoom;
         private User updatedUser;
+        private Equipment updatedequipment;
+        private Home maison;
 
         public Form1()
         {
@@ -36,20 +41,49 @@ namespace OpenWebNetWinForm
             host = new ServiceHost(typeof(ServiceLegrand.ServiceLegrand));
             host.Open();
 
+            this.maison = new Home();
+            maison.retrieveByUserId(1);
+
             loadcombobox();
         }
 
         private void loadcombobox()
         {
+            cbRooms.Items.Clear();
+            cbRooms.Text = "";
             cbUsers.Items.Clear();
-            Users = new List<User>();
+            cbUsers.Text = "";
+
+            this.maison.retrieveByUserId(1);
+            this.rooms = maison.Rooms;
+
             Users = User.retrieveAllUser();
 
             foreach (User user in Users)
             {
                 cbUsers.Items.Add(user.Name);
             }
+
+            foreach (Room room in rooms)
+            {
+                cbRooms.Items.Add(room.Name);
+            }
+
+
         }
+
+        private void loadEquip(Room updatedRoom)
+        {
+            cbEquip.Items.Clear();
+            cbEquip.Text = "";
+
+            foreach (Equipment equipement in updatedRoom.Equipments)
+            {
+                cbEquip.Items.Add(equipement.Name);
+            }
+            
+        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -106,11 +140,16 @@ namespace OpenWebNetWinForm
             Console.WriteLine("STOP");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnaddUser_Click(object sender, EventArgs e)
         {
             User Client = new User();
             Client = Client.add(tbaddPrenom.Text, tbaddNom.Text, tbaddEmail.Text, tbaddMdp.Text);
+
             cbUsers.Items.Clear();
+            tbaddPrenom.Text = "";
+            tbaddNom.Text = "";
+            tbaddEmail.Text = "";
+            tbaddMdp.Text = "";
             loadcombobox();
         }
 
@@ -126,7 +165,6 @@ namespace OpenWebNetWinForm
             updatedUser.Mail = tbupdateEmail.Text;
             updatedUser.Password = tbupdateMdp.Text;
             updatedUser.update();
-            loadcombobox();
         }
 
         private void cbUsers_SelectedIndexChanged(object sender, EventArgs e)
@@ -146,6 +184,65 @@ namespace OpenWebNetWinForm
         {
             int selectedIndex = cbUsers.SelectedIndex;
             updatedUser = Users.ElementAt(selectedIndex);
+            updatedUser.remove();
+            tbupdatePrenom.Text = "";
+            tbupdateNom.Text = "";
+            tbupdateEmail.Text = "";
+            tbupdateMdp.Text = "";
+            loadcombobox();
+
+        }
+
+        private void btnaddPiece_Click(object sender, EventArgs e)
+        {
+            Room newRoom = new Room(0, tbaddPiece.Text, (float)50, new List<Equipment>(), new Consumption(0, "200", "200"));
+            newRoom = newRoom.add(this.maison.Id);
+
+            cbRooms.Items.Clear();
+            tbaddPiece.Text = "";
+            loadcombobox();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbRooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = cbRooms.SelectedIndex;
+            updatedRoom = rooms.ElementAt(selectedIndex);
+
+            this.equips = updatedRoom.Equipments;
+
+            loadEquip(updatedRoom);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            updatedRoom.Name = cbRooms.Text;
+            updatedRoom.update();
+            loadcombobox();
+        }
+
+        private void deleteRoom_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = cbRooms.SelectedIndex;
+            updatedRoom = rooms.ElementAt(selectedIndex);
+            updatedRoom.remove();
+            loadcombobox();
+        }
+
+        private void cbEquip_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = cbEquip.SelectedIndex;
+            this.updatedequipment = this.equips.ElementAt(selectedIndex);
+            tbupdateidEquip.Text = this.updatedequipment.Number.ToString();
+        }
+
+        private void updateEquip_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

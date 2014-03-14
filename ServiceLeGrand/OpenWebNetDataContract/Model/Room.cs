@@ -182,14 +182,66 @@ namespace OpenWebNetDataContract.Model
             }
         }
 
-        Boolean remove(Room room)
+        public bool remove()
         {
-            throw new NotImplementedException();
+            CAD.SQLite db;
+
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                int updatedRow = 0;
+                String query = "DELETE FROM Room WHERE Id = " + this.Id + ";";
+
+                updatedRow = db.ExecuteNonQuery(query);
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("Room deleted");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Room was not deleted");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
         }
 
-        Room update(Room room)
+        public Boolean update()
         {
-            throw new NotImplementedException();
+            CAD.SQLite db;
+            try
+            {
+                db = CAD.SQLite.getInstance();
+                int updatedRow = 0;
+                String query = "UPDATE Room SET Name='" + this.Name + "';";
+
+                updatedRow = db.ExecuteNonQuery(query);
+
+                if (updatedRow > 0)
+                {
+                    Console.WriteLine("Room updated");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("error: room not updated");
+                    return false;
+                }
+            }
+            catch (Exception fail)
+            {
+                String error = "The following error has occurred:\n\n";
+                error += fail.Message.ToString() + "\n";
+                Console.WriteLine(error);
+                return false;
+            }
         }
 
         public void retrieveById(int id)
